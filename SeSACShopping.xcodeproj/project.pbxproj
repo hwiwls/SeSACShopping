@@ -15,6 +15,13 @@
 		2EBFFBF72B5A55E60029CD35 /* UIColor+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFBF62B5A55E60029CD35 /* UIColor+CustomColor.swift */; };
 		2EBFFBFA2B5A560B0029CD35 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2EBFFBF92B5A560B0029CD35 /* Kingfisher */; };
 		2EBFFBFD2B5A56150029CD35 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2EBFFBFC2B5A56150029CD35 /* Alamofire */; };
+		2EBFFBFF2B5A5E520029CD35 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFBFE2B5A5E520029CD35 /* OnboardingViewController.swift */; };
+		2EBFFC012B5A5EE60029CD35 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFC002B5A5EE60029CD35 /* ProfileSettingViewController.swift */; };
+		2EBFFC032B5A5F0A0029CD35 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFC022B5A5F0A0029CD35 /* ProfileImageViewController.swift */; };
+		2EBFFC062B5A60E60029CD35 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 2EBFFC052B5A60E60029CD35 /* TextFieldEffects */; };
+		2EBFFC0B2B5A9F960029CD35 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFC092B5A9F960029CD35 /* ProfileImageCollectionViewCell.swift */; };
+		2EBFFC0C2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBFFC0A2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib */; };
+		2EBFFC0E2B5AA5170029CD35 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFC0D2B5AA5170029CD35 /* UserDefaultManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +33,12 @@
 		2EBFFBE82B5A53900029CD35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EBFFBEA2B5A53900029CD35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EBFFBF62B5A55E60029CD35 /* UIColor+CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColor.swift"; sourceTree = "<group>"; };
+		2EBFFBFE2B5A5E520029CD35 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		2EBFFC002B5A5EE60029CD35 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
+		2EBFFC022B5A5F0A0029CD35 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
+		2EBFFC092B5A9F960029CD35 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		2EBFFC0A2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		2EBFFC0D2B5AA5170029CD35 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EBFFC062B5A60E60029CD35 /* TextFieldEffects in Frameworks */,
 				2EBFFBFA2B5A560B0029CD35 /* Kingfisher in Frameworks */,
 				2EBFFBFD2B5A56150029CD35 /* Alamofire in Frameworks */,
 			);
@@ -64,15 +78,15 @@
 				2EBFFBDE2B5A538F0029CD35 /* SceneDelegate.swift */,
 				2EBFFBE22B5A538F0029CD35 /* Main.storyboard */,
 				2EBFFBF02B5A53F70029CD35 /* Onboarding */,
-				2EBFFBF32B5A54190029CD35 /* SearchResult */,
-				2EBFFBF22B5A54120029CD35 /* Main */,
 				2EBFFBF12B5A54080029CD35 /* ProfileSetting */,
+				2EBFFBF22B5A54120029CD35 /* Main */,
+				2EBFFBF32B5A54190029CD35 /* SearchResult */,
 				2EBFFBF42B5A54290029CD35 /* Settings */,
+				2EBFFC0D2B5AA5170029CD35 /* UserDefaultManager.swift */,
 				2EBFFBF52B5A55B30029CD35 /* Extension */,
 				2EBFFBE52B5A53900029CD35 /* Assets.xcassets */,
 				2EBFFBE72B5A53900029CD35 /* LaunchScreen.storyboard */,
 				2EBFFBEA2B5A53900029CD35 /* Info.plist */,
-				2EBFFBF62B5A55E60029CD35 /* UIColor+CustomColor.swift */,
 			);
 			path = SeSACShopping;
 			sourceTree = "<group>";
@@ -80,6 +94,7 @@
 		2EBFFBF02B5A53F70029CD35 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				2EBFFBFE2B5A5E520029CD35 /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -87,6 +102,8 @@
 		2EBFFBF12B5A54080029CD35 /* ProfileSetting */ = {
 			isa = PBXGroup;
 			children = (
+				2EBFFC072B5A9F710029CD35 /* ProfileSetting */,
+				2EBFFC082B5A9F780029CD35 /* ProfileImage */,
 			);
 			path = ProfileSetting;
 			sourceTree = "<group>";
@@ -115,8 +132,27 @@
 		2EBFFBF52B5A55B30029CD35 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2EBFFBF62B5A55E60029CD35 /* UIColor+CustomColor.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		2EBFFC072B5A9F710029CD35 /* ProfileSetting */ = {
+			isa = PBXGroup;
+			children = (
+				2EBFFC002B5A5EE60029CD35 /* ProfileSettingViewController.swift */,
+			);
+			path = ProfileSetting;
+			sourceTree = "<group>";
+		};
+		2EBFFC082B5A9F780029CD35 /* ProfileImage */ = {
+			isa = PBXGroup;
+			children = (
+				2EBFFC022B5A5F0A0029CD35 /* ProfileImageViewController.swift */,
+				2EBFFC092B5A9F960029CD35 /* ProfileImageCollectionViewCell.swift */,
+				2EBFFC0A2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib */,
+			);
+			path = ProfileImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +174,7 @@
 			packageProductDependencies = (
 				2EBFFBF92B5A560B0029CD35 /* Kingfisher */,
 				2EBFFBFC2B5A56150029CD35 /* Alamofire */,
+				2EBFFC052B5A60E60029CD35 /* TextFieldEffects */,
 			);
 			productName = SeSACShopping;
 			productReference = 2EBFFBD92B5A538F0029CD35 /* SeSACShopping.app */;
@@ -170,6 +207,7 @@
 			packageReferences = (
 				2EBFFBF82B5A560B0029CD35 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				2EBFFBFB2B5A56150029CD35 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2EBFFC042B5A60E60029CD35 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = 2EBFFBDA2B5A538F0029CD35 /* Products */;
 			projectDirPath = "";
@@ -187,6 +225,7 @@
 			files = (
 				2EBFFBE92B5A53900029CD35 /* LaunchScreen.storyboard in Resources */,
 				2EBFFBE62B5A53900029CD35 /* Assets.xcassets in Resources */,
+				2EBFFC0C2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib in Resources */,
 				2EBFFBE42B5A538F0029CD35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,9 +237,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EBFFC032B5A5F0A0029CD35 /* ProfileImageViewController.swift in Sources */,
 				2EBFFBDD2B5A538F0029CD35 /* AppDelegate.swift in Sources */,
+				2EBFFC0E2B5AA5170029CD35 /* UserDefaultManager.swift in Sources */,
 				2EBFFBF72B5A55E60029CD35 /* UIColor+CustomColor.swift in Sources */,
+				2EBFFC012B5A5EE60029CD35 /* ProfileSettingViewController.swift in Sources */,
 				2EBFFBDF2B5A538F0029CD35 /* SceneDelegate.swift in Sources */,
+				2EBFFBFF2B5A5E520029CD35 /* OnboardingViewController.swift in Sources */,
+				2EBFFC0B2B5A9F960029CD35 /* ProfileImageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -335,7 +379,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -367,9 +411,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hwijin.SeSACShopping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -395,9 +443,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hwijin.SeSACShopping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -441,6 +493,14 @@
 				minimumVersion = 5.8.1;
 			};
 		};
+		2EBFFC042B5A60E60029CD35 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -453,6 +513,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2EBFFBFB2B5A56150029CD35 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		2EBFFC052B5A60E60029CD35 /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2EBFFC042B5A60E60029CD35 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
