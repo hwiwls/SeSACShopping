@@ -61,6 +61,11 @@ extension MainViewController: UISearchBarDelegate {
         recentSearchTableView.reloadData()
 //        UserDefaultManager.shared.recentSearchWords.append(searchBar.text!)
         // 서버와 연동해서 검색 결과 보내기
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
+        vc.searchBarInput = searchBar.text!
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

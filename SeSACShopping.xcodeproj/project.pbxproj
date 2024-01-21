@@ -28,6 +28,8 @@
 		2EFDF1192B5D0EAD00566070 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF1182B5D0EAD00566070 /* SearchResultViewController.swift */; };
 		2EFDF11C2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF11A2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift */; };
 		2EFDF11D2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFDF11B2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib */; };
+		2EFDF11F2B5D16D400566070 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF11E2B5D16D400566070 /* APIKey.swift */; };
+		2EFDF1212B5D1AF700566070 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF1202B5D1AF700566070 /* Shopping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		2EFDF1182B5D0EAD00566070 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		2EFDF11A2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		2EFDF11B2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCollectionViewCell.xib; sourceTree = "<group>"; };
+		2EFDF11E2B5D16D400566070 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		2EFDF1202B5D1AF700566070 /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 				2EBFFBE52B5A53900029CD35 /* Assets.xcassets */,
 				2EBFFBE72B5A53900029CD35 /* LaunchScreen.storyboard */,
 				2EBFFBEA2B5A53900029CD35 /* Info.plist */,
+				2EFDF11E2B5D16D400566070 /* APIKey.swift */,
 			);
 			path = SeSACShopping;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				2EFDF1182B5D0EAD00566070 /* SearchResultViewController.swift */,
 				2EFDF11A2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift */,
 				2EFDF11B2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib */,
+				2EFDF1202B5D1AF700566070 /* Shopping.swift */,
 			);
 			path = SearchResult;
 			sourceTree = "<group>";
@@ -264,10 +270,12 @@
 				2E32D2B22B5BACDE007D60F8 /* RecentSearchTableViewCell.swift in Sources */,
 				2EBFFC012B5A5EE60029CD35 /* ProfileSettingViewController.swift in Sources */,
 				2EBFFBDF2B5A538F0029CD35 /* SceneDelegate.swift in Sources */,
+				2EFDF1212B5D1AF700566070 /* Shopping.swift in Sources */,
 				2EFDF11C2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift in Sources */,
 				2E32D2AF2B5BACB1007D60F8 /* MainViewController.swift in Sources */,
 				2EFDF1192B5D0EAD00566070 /* SearchResultViewController.swift in Sources */,
 				2EBFFBFF2B5A5E520029CD35 /* OnboardingViewController.swift in Sources */,
+				2EFDF11F2B5D16D400566070 /* APIKey.swift in Sources */,
 				2EBFFC0B2B5A9F960029CD35 /* ProfileImageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
