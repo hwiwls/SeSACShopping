@@ -27,6 +27,8 @@ class ProfileSettingViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageViewClicked(_:)))
             profileImageView.isUserInteractionEnabled = true
             profileImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        completeBtn.addTarget(self, action: #selector(completeBtnClicked), for: .touchUpInside)
     }
     
     // 프로필 설정 이미지에서 뒤로 돌아올 때 이미지가 업데이트 되기 위해
@@ -35,6 +37,14 @@ class ProfileSettingViewController: UIViewController {
 
         let selectedImg = UserDefaultManager.shared.selectedImage
         profileImageView.image = UIImage(named: selectedImg)
+    }
+    
+    @objc func completeBtnClicked() {
+        UserDefaultManager.shared.nickname = nicknameTextField.text!
+//        print(UserDefaultManager.shared.nickname)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func configNav() {
@@ -47,6 +57,8 @@ class ProfileSettingViewController: UIViewController {
     
     @objc func backToPrevios() {
         navigationController?.popViewController(animated: true)
+        UserDefaultManager.shared.removeSelectedImage()
+        UserDefaultManager.shared.removeNickname()
     }
     
     func configView() {
@@ -97,10 +109,13 @@ extension ProfileSettingViewController: UITextFieldDelegate {
         
         if text.count < 2 || text.count > 9 || text.isEmpty {
             stateLabel.text = "2글자 이상 10글자 미만으로 설정해주세요"
+            completeBtn.isEnabled = false
         } else if specialChar.contains(where: text.contains) {
             stateLabel.text = "닉네임에 @, #, $, %는 포함할 수 없어요"
+            completeBtn.isEnabled = false
         } else if text.contains(where: { $0.isNumber }) {
             stateLabel.text = "닉네임에 숫자는 포함할 수 없어요"
+            completeBtn.isEnabled = false
         } else {
             stateLabel.text = "사용할 수 있는 닉네임이에요"
             completeBtn.isEnabled = true
