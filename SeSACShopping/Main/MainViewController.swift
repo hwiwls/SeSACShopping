@@ -57,11 +57,10 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        arr.insert(searchBar.text!, at: 0)  // 검색어를 아래에서 위로 추가하게끔 하기 윟
+//        arr.insert(searchBar.text!, at: 0)  // 검색어를 아래에서 위로 추가하게끔 하기 윟
         recentSearchTableView.reloadData()
-//        UserDefaultManager.shared.recentSearchWords.append(searchBar.text!)
-        // 서버와 연동해서 검색 결과 보내기
-        
+        UserDefaultManager.shared.recentSearchWords.insert(searchBar.text!, at: 0)
+
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
         vc.searchBarInput = searchBar.text!
@@ -72,14 +71,14 @@ extension MainViewController: UISearchBarDelegate {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arr.count
+        return UserDefaultManager.shared.recentSearchWords.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentSearchTableViewCell", for: indexPath) as? RecentSearchTableViewCell else { return UITableViewCell() }
         
         cell.magnifyingglassImageView.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysOriginal).withTintColor(.white)
-        cell.searchWordLabel.text = arr[indexPath.row]
+        cell.searchWordLabel.text = UserDefaultManager.shared.recentSearchWords[indexPath.row]
         cell.searchWordLabel.textColor = .white
         cell.searchWordLabel.font = .systemFont(ofSize: 15)
         
@@ -93,7 +92,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func deleteWord(_ sender: UIButton) {
         let index = sender.tag
-        arr.remove(at: index)
+        UserDefaultManager.shared.recentSearchWords.remove(at: index)
         recentSearchTableView.reloadData()
     }
 }

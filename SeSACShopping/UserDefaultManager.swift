@@ -57,7 +57,7 @@ class UserDefaultManager {
     }
     
     func removeNickname() {  // 유저 이름 삭제
-        ud.removeObject(forKey: UDKey.selectedImage.rawValue)
+        ud.removeObject(forKey: UDKey.nickname.rawValue)
     }
     
     
