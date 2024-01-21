@@ -41,10 +41,12 @@ class ProfileSettingViewController: UIViewController {
     
     @objc func completeBtnClicked() {
         UserDefaultManager.shared.nickname = nicknameTextField.text!
-//        print(UserDefaultManager.shared.nickname)
+        UserDefaultManager.shared.userState = true
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = sb.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+        // 네비게이션바가 2개 생기는 문제 때문에 present 방식을 사용
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     func configNav() {

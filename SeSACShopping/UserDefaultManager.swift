@@ -21,6 +21,7 @@ class UserDefaultManager {
         case selectedImage  // 프로필 사진
         case nickname   // 유저 이름
         case recentSearchWords   // 최근 검색어
+        case userState  // 회원 가입 상태 유무. true일 경우 가입 완료
     }
     
     let ud = UserDefaults.standard
@@ -52,6 +53,15 @@ class UserDefaultManager {
         }
     }
     
+    var userState: Bool {
+        get {
+            ud.bool(forKey: UDKey.userState.rawValue)
+        }
+        set {
+            ud.setValue(newValue, forKey: UDKey.userState.rawValue)
+        }
+    }
+    
     func removeSelectedImage() {  // 선택한 프로필 이미지를 삭제
         ud.removeObject(forKey: UDKey.selectedImage.rawValue)
     }
@@ -60,5 +70,15 @@ class UserDefaultManager {
         ud.removeObject(forKey: UDKey.nickname.rawValue)
     }
     
+    func removeRecentSearchWords() {  // 검색 기록 삭제
+        ud.removeObject(forKey: UDKey.recentSearchWords.rawValue)
+    }
+    
+    func removeAll() {
+        ud.removeObject(forKey: UDKey.selectedImage.rawValue)
+        ud.removeObject(forKey: UDKey.nickname.rawValue)
+        ud.removeObject(forKey: UDKey.recentSearchWords.rawValue)
+        ud.removeObject(forKey: UDKey.userState.rawValue)
+    }
     
 }

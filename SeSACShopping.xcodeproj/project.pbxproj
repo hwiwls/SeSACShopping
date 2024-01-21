@@ -26,6 +26,9 @@
 		2EBFFC0C2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBFFC0A2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib */; };
 		2EBFFC0E2B5AA5170029CD35 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFC0D2B5AA5170029CD35 /* UserDefaultManager.swift */; };
 		2ED6B5CA2B5D76F200F25D13 /* ProductDatailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED6B5C92B5D76F200F25D13 /* ProductDatailViewController.swift */; };
+		2ED6B5CC2B5D817400F25D13 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED6B5CB2B5D817400F25D13 /* SettingViewController.swift */; };
+		2ED6B5CF2B5D817F00F25D13 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED6B5CD2B5D817F00F25D13 /* SettingTableViewCell.swift */; };
+		2ED6B5D02B5D817F00F25D13 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED6B5CE2B5D817F00F25D13 /* SettingTableViewCell.xib */; };
 		2EFDF1192B5D0EAD00566070 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF1182B5D0EAD00566070 /* SearchResultViewController.swift */; };
 		2EFDF11C2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF11A2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift */; };
 		2EFDF11D2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFDF11B2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib */; };
@@ -52,6 +55,9 @@
 		2EBFFC0A2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		2EBFFC0D2B5AA5170029CD35 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		2ED6B5C92B5D76F200F25D13 /* ProductDatailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDatailViewController.swift; sourceTree = "<group>"; };
+		2ED6B5CB2B5D817400F25D13 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		2ED6B5CD2B5D817F00F25D13 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		2ED6B5CE2B5D817F00F25D13 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		2EFDF1182B5D0EAD00566070 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		2EFDF11A2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		2EFDF11B2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 		2EBFFBF42B5A54290029CD35 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				2ED6B5CB2B5D817400F25D13 /* SettingViewController.swift */,
+				2ED6B5CD2B5D817F00F25D13 /* SettingTableViewCell.swift */,
+				2ED6B5CE2B5D817F00F25D13 /* SettingTableViewCell.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -255,6 +264,7 @@
 				2E32D2B32B5BACDE007D60F8 /* RecentSearchTableViewCell.xib in Resources */,
 				2EBFFBE62B5A53900029CD35 /* Assets.xcassets in Resources */,
 				2EBFFC0C2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib in Resources */,
+				2ED6B5D02B5D817F00F25D13 /* SettingTableViewCell.xib in Resources */,
 				2EBFFBE42B5A538F0029CD35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,12 +279,14 @@
 				2EBFFC032B5A5F0A0029CD35 /* ProfileImageViewController.swift in Sources */,
 				2EBFFBDD2B5A538F0029CD35 /* AppDelegate.swift in Sources */,
 				2EBFFC0E2B5AA5170029CD35 /* UserDefaultManager.swift in Sources */,
+				2ED6B5CC2B5D817400F25D13 /* SettingViewController.swift in Sources */,
 				2EBFFBF72B5A55E60029CD35 /* UIColor+CustomColor.swift in Sources */,
 				2E32D2B22B5BACDE007D60F8 /* RecentSearchTableViewCell.swift in Sources */,
 				2EBFFC012B5A5EE60029CD35 /* ProfileSettingViewController.swift in Sources */,
 				2EBFFBDF2B5A538F0029CD35 /* SceneDelegate.swift in Sources */,
 				2EFDF1212B5D1AF700566070 /* Shopping.swift in Sources */,
 				2ED6B5CA2B5D76F200F25D13 /* ProductDatailViewController.swift in Sources */,
+				2ED6B5CF2B5D817F00F25D13 /* SettingTableViewCell.swift in Sources */,
 				2EFDF11C2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift in Sources */,
 				2E32D2AF2B5BACB1007D60F8 /* MainViewController.swift in Sources */,
 				2EFDF1192B5D0EAD00566070 /* SearchResultViewController.swift in Sources */,

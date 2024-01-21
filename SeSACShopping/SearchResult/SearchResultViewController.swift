@@ -55,10 +55,10 @@ class SearchResultViewController: UIViewController {
                     self.list = success
                 } else {
                     self.list.items.append(contentsOf: success.items)
-                    self.resultCountLabel.text = "\(success.total)개의 검색 결과"
                     self.totalCount = success.total
                 }
                 self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
                 
             case .failure(let failure):
                 print(failure)

@@ -57,7 +57,7 @@ class MainViewController: UIViewController {
     }
     
     func configNav() {
-        navigationItem.title = "떠나고 싶은 \(UserDefaultManager.shared.nickname)님의 새싹쇼핑"
+        navigationItem.title = "\(UserDefaultManager.shared.nickname)님의 새싹쇼핑"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         self.navigationItem.hidesBackButton = true  // back 버튼 숨기기
@@ -86,6 +86,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentSearchTableViewCell", for: indexPath) as? RecentSearchTableViewCell else { return UITableViewCell() }
+        
+        cell.selectionStyle = .none
         
         cell.magnifyingglassImageView.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysOriginal).withTintColor(.white)
         cell.searchWordLabel.text = UserDefaultManager.shared.recentSearchWords[indexPath.row]
