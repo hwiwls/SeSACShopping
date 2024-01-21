@@ -9,9 +9,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var arr: [String] = []
-    
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var emptyListImageView: UIImageView!
     @IBOutlet weak var emptyListLabel: UILabel!
@@ -28,6 +25,19 @@ class MainViewController: UIViewController {
         recentSearchTableView.rowHeight = 55
         configView()
         configNav()
+        configUI()
+    }
+    
+    func configUI() {
+        if UserDefaultManager.shared.recentSearchWords.isEmpty {
+            emptyListLabel.isHidden = false
+            emptyListImageView.isHidden = false
+            recentSearchTableView.isHidden = true
+        } else {
+            emptyListLabel.isHidden = true
+            emptyListImageView.isHidden = true
+            recentSearchTableView.isHidden = false
+        }
     }
     
     func configView() {
@@ -57,9 +67,9 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        arr.insert(searchBar.text!, at: 0)  // 검색어를 아래에서 위로 추가하게끔 하기 윟
-        recentSearchTableView.reloadData()
         UserDefaultManager.shared.recentSearchWords.insert(searchBar.text!, at: 0)
+        configUI()
+        recentSearchTableView.reloadData()
 
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
@@ -93,6 +103,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func deleteWord(_ sender: UIButton) {
         let index = sender.tag
         UserDefaultManager.shared.recentSearchWords.remove(at: index)
-        recentSearchTableView.reloadData()
+        
+        if UserDefaultManager.shared.recentSearchWords.isEmpty {
+                emptyListLabel.isHidden = false
+                emptyListImageView.isHidden = false
+                recentSearchTableView.isHidden = true
+        } else {
+            recentSearchTableView.reloadData()
+        }
     }
 }

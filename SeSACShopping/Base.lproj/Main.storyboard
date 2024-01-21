@@ -418,6 +418,40 @@
             </objects>
             <point key="canvasLocation" x="2599" y="789"/>
         </scene>
+        <!--Product Datail View Controller-->
+        <scene sceneID="McU-aD-3VE">
+            <objects>
+                <viewController storyboardIdentifier="ProductDatailViewController" id="Rd4-bb-q1s" customClass="ProductDatailViewController" customModule="SeSACShopping" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z1z-F7-eqZ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFc-vA-yFh">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JLz-NP-dkB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UFc-vA-yFh" firstAttribute="top" secondItem="JLz-NP-dkB" secondAttribute="top" id="6Th-Y2-rQZ"/>
+                            <constraint firstItem="JLz-NP-dkB" firstAttribute="bottom" secondItem="UFc-vA-yFh" secondAttribute="bottom" id="HBv-e3-1lZ"/>
+                            <constraint firstItem="JLz-NP-dkB" firstAttribute="trailing" secondItem="UFc-vA-yFh" secondAttribute="trailing" id="Pu4-HJ-ge2"/>
+                            <constraint firstItem="UFc-vA-yFh" firstAttribute="leading" secondItem="JLz-NP-dkB" secondAttribute="leading" id="rFc-S4-TQp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="productWebView" destination="UFc-vA-yFh" id="DE1-vI-m73"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MTo-bD-9bn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3283" y="789"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="E9M-eR-waQ">
             <objects>

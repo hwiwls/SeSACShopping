@@ -11,10 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchResultCollectionViewCell" id="gTV-IL-0wX" customClass="SearchResultCollectionViewCell" customModule="SeSACShopping" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="170" height="243"/>
+            <rect key="frame" x="0.0" y="0.0" width="170" height="262"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="170" height="243"/>
+                <rect key="frame" x="0.0" y="0.0" width="170" height="262"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qqc-Zm-w4C">
@@ -23,23 +23,23 @@
                             <constraint firstAttribute="width" secondItem="Qqc-Zm-w4C" secondAttribute="height" multiplier="1:1" id="gmF-Ai-SVf"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SU-as-KMY">
-                        <rect key="frame" x="7" y="172" width="33" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SU-as-KMY">
+                        <rect key="frame" x="8" y="174" width="154" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOs-Kg-0Mp">
-                        <rect key="frame" x="7" y="190" width="38" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOs-Kg-0Mp">
+                        <rect key="frame" x="8" y="192" width="154" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="Km6-IT-2ay"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSd-ns-zHl">
-                        <rect key="frame" x="7" y="212" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSd-ns-zHl">
+                        <rect key="frame" x="8" y="214" width="154" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -48,18 +48,27 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="6SU-as-KMY" firstAttribute="top" secondItem="Qqc-Zm-w4C" secondAttribute="bottom" constant="4" id="2Gu-bf-Kn4"/>
+                <constraint firstAttribute="trailing" secondItem="6SU-as-KMY" secondAttribute="trailing" constant="8" id="3TY-bn-Kvt"/>
+                <constraint firstItem="AOs-Kg-0Mp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="9da-pz-vUg"/>
                 <constraint firstItem="Qqc-Zm-w4C" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FdW-cE-bvC"/>
+                <constraint firstItem="gSd-ns-zHl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Iu2-K2-rgE"/>
+                <constraint firstItem="AOs-Kg-0Mp" firstAttribute="top" secondItem="6SU-as-KMY" secondAttribute="bottom" constant="2" id="PWM-rf-3cN"/>
+                <constraint firstItem="gSd-ns-zHl" firstAttribute="top" secondItem="AOs-Kg-0Mp" secondAttribute="bottom" constant="4" id="RDH-pU-DGF"/>
+                <constraint firstAttribute="trailing" secondItem="gSd-ns-zHl" secondAttribute="trailing" constant="8" id="Rpg-Ct-iiO"/>
+                <constraint firstItem="6SU-as-KMY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="UzZ-gY-T35"/>
+                <constraint firstAttribute="trailing" secondItem="AOs-Kg-0Mp" secondAttribute="trailing" constant="8" id="Xk8-RJ-4SW"/>
                 <constraint firstItem="Qqc-Zm-w4C" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="utb-R3-1Jg"/>
                 <constraint firstAttribute="trailing" secondItem="Qqc-Zm-w4C" secondAttribute="trailing" id="xVt-tq-rA0"/>
             </constraints>
-            <size key="customSize" width="170" height="243"/>
+            <size key="customSize" width="170" height="262"/>
             <connections>
                 <outlet property="mallNameLabel" destination="6SU-as-KMY" id="e02-n1-fHR"/>
                 <outlet property="priceLabel" destination="gSd-ns-zHl" id="l6J-b6-a72"/>
                 <outlet property="productImageView" destination="Qqc-Zm-w4C" id="WmA-3D-XBa"/>
                 <outlet property="titleLabel" destination="AOs-Kg-0Mp" id="Hxc-ab-c0Y"/>
             </connections>
-            <point key="canvasLocation" x="160.30534351145039" y="87.676056338028175"/>
+            <point key="canvasLocation" x="160.30534351145039" y="94.366197183098592"/>
         </collectionViewCell>
     </objects>
 </document>
