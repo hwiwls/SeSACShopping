@@ -50,11 +50,16 @@ class ProfileSettingViewController: UIViewController {
     @objc func completeBtnClicked() {
         UserDefaultManager.shared.nickname = nicknameTextField.text!
         UserDefaultManager.shared.userState = true
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-        // 네비게이션바가 2개 생기는 문제 때문에 present 방식을 사용
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        
+        if UserDefaultManager.shared.isSetting == false {
+            navigationController?.popViewController(animated: true)
+        } else {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+            // 네비게이션바가 2개 생기는 문제 때문에 present 방식을 사용
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     func configNav() {
@@ -128,5 +133,11 @@ extension ProfileSettingViewController: UITextFieldDelegate {
             stateLabel.text = "사용할 수 있는 닉네임이에요"
             completeBtn.isEnabled = true
         }
+    }
+    
+    // return 버튼 누르면 키보드 내려가게
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

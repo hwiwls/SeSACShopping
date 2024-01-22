@@ -82,13 +82,6 @@ class UserDefaultManager {
         }
     }
 
-    
-    /*
-     다음 함수를 실행해도 프로젝트를 다시 실행시키면 userdefault 값이 남아있다(?)는 문제가 있습니다.
-     프로젝트를 실행하고 run인 상태에서 마이페이지에서 '처음부터 시작하기' 버튼을 누르면 온보딩 화면으로 넘어가면서 userdefault 값이 삭제되는데,
-     온보딩 화면에서 프로젝트를 종료하고 다시 실행시키면 userdefault가 그대로 남아있어서 메인페이지에서 시작하게 됩니다.ㅠㅠ
-     이게 정상적인건가요?
-    */
     func removeSelectedImage() {  // 선택한 프로필 이미지를 삭제
         ud.removeObject(forKey: UDKey.selectedImage.rawValue)
     }

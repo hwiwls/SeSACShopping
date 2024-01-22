@@ -79,6 +79,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E3CD5BB2B5E507F00E36DB5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2EFDF1202B5D1AF700566070 /* Shopping.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2E3CD5BC2B5E509B00E36DB5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				2EBFFBE52B5A53900029CD35 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		2EBFFBD02B5A538F0029CD35 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +117,8 @@
 				2EBFFBDC2B5A538F0029CD35 /* AppDelegate.swift */,
 				2EBFFBDE2B5A538F0029CD35 /* SceneDelegate.swift */,
 				2EBFFBE22B5A538F0029CD35 /* Main.storyboard */,
+				2EBFFBE72B5A53900029CD35 /* LaunchScreen.storyboard */,
+				2E3CD5BB2B5E507F00E36DB5 /* Model */,
 				2EBFFBF02B5A53F70029CD35 /* Onboarding */,
 				2EBFFBF12B5A54080029CD35 /* ProfileSetting */,
 				2EBFFBF22B5A54120029CD35 /* Main */,
@@ -108,10 +126,8 @@
 				2EBFFBF42B5A54290029CD35 /* Settings */,
 				2EBFFC0D2B5AA5170029CD35 /* UserDefaultManager.swift */,
 				2EFDF11E2B5D16D400566070 /* APIKey.swift */,
-				2EFDF1202B5D1AF700566070 /* Shopping.swift */,
 				2EBFFBF52B5A55B30029CD35 /* Extension */,
-				2EBFFBE52B5A53900029CD35 /* Assets.xcassets */,
-				2EBFFBE72B5A53900029CD35 /* LaunchScreen.storyboard */,
+				2E3CD5BC2B5E509B00E36DB5 /* Resource */,
 				2EBFFBEA2B5A53900029CD35 /* Info.plist */,
 			);
 			path = SeSACShopping;

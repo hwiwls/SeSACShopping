@@ -13,34 +13,57 @@ class MainViewController: UIViewController {
     @IBOutlet weak var emptyListImageView: UIImageView!
     @IBOutlet weak var emptyListLabel: UILabel!
     @IBOutlet weak var recentSearchTableView: UITableView!
+    @IBOutlet weak var tableViewHeader: UIView!
+    @IBOutlet weak var recentSearchLabel: UILabel!
+    @IBOutlet weak var clearAllBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         recentSearchTableView.backgroundColor = .clear
+        
         searchBar.delegate = self
         recentSearchTableView.delegate = self
         recentSearchTableView.dataSource = self
         recentSearchTableView.register(UINib(nibName: "RecentSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "RecentSearchTableViewCell")
         recentSearchTableView.rowHeight = 55
+        
         configView()
         configNav()
         configUI()
     }
-    
+}
+
+extension MainViewController {
     func configUI() {
         if UserDefaultManager.shared.recentSearchWords.isEmpty {
             emptyListLabel.isHidden = false
             emptyListImageView.isHidden = false
             recentSearchTableView.isHidden = true
+            tableViewHeader.isHidden = true
+            recentSearchLabel.isHidden = true
+            clearAllBtn.isHidden = true
         } else {
             emptyListLabel.isHidden = true
             emptyListImageView.isHidden = true
             recentSearchTableView.isHidden = false
+            tableViewHeader.isHidden = false
+            recentSearchLabel.isHidden = false
+            clearAllBtn.isHidden = false
         }
     }
     
     func configView() {
+        tableViewHeader.backgroundColor = .black
+        
+        recentSearchLabel.text = "최근 검색"
+        recentSearchLabel.textColor = .white
+        recentSearchLabel.font = .boldSystemFont(ofSize: 14)
+        
+        clearAllBtn.setTitle("모두 지우기", for: .normal)
+        clearAllBtn.tintColor = UIColor.customColor.pointColor
+        clearAllBtn.addTarget(self, action: #selector(clearAllSearchList), for: .touchUpInside)
+        
         searchBar.showsBookmarkButton = false
         searchBar.barTintColor = .black
         searchBar.searchTextField.backgroundColor = .darkGray
@@ -62,7 +85,20 @@ class MainViewController: UIViewController {
         
         self.navigationItem.hidesBackButton = true  // back 버튼 숨기기
     }
-
+    
+    @objc func clearAllSearchList() {
+        UserDefaultManager.shared.removeRecentSearchWords()
+        if UserDefaultManager.shared.recentSearchWords.isEmpty {
+            emptyListLabel.isHidden = false
+            emptyListImageView.isHidden = false
+            recentSearchTableView.isHidden = true
+            tableViewHeader.isHidden = true
+            recentSearchLabel.isHidden = true
+            clearAllBtn.isHidden = true
+        } else {
+            recentSearchTableView.reloadData()
+        }
+    }
 }
 
 extension MainViewController: UISearchBarDelegate {
@@ -70,6 +106,8 @@ extension MainViewController: UISearchBarDelegate {
         UserDefaultManager.shared.recentSearchWords.insert(searchBar.text!, at: 0)
         configUI()
         recentSearchTableView.reloadData()
+        
+        searchBar.resignFirstResponder()    // return 버튼 누르면 키보드 내리기
 
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
@@ -107,9 +145,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         UserDefaultManager.shared.recentSearchWords.remove(at: index)
         
         if UserDefaultManager.shared.recentSearchWords.isEmpty {
-                emptyListLabel.isHidden = false
-                emptyListImageView.isHidden = false
-                recentSearchTableView.isHidden = true
+            emptyListLabel.isHidden = false
+            emptyListImageView.isHidden = false
+            recentSearchTableView.isHidden = true
+            tableViewHeader.isHidden = true
+            recentSearchLabel.isHidden = true
+            clearAllBtn.isHidden = true
         } else {
             recentSearchTableView.reloadData()
         }

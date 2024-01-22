@@ -189,7 +189,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MWg-Ob-1So">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileImageCollectionViewCell" id="MWg-Ob-1So" customClass="ProfileImageCollectionViewCell" customModule="SeSACShopping" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="L7A-rR-9Td">
@@ -280,9 +280,39 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rr9-Pv-Fol">
-                                <rect key="frame" x="0.0" y="147" width="393" height="622"/>
+                                <rect key="frame" x="0.0" y="197" width="393" height="572"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNo-ld-mQ5">
+                                <rect key="frame" x="0.0" y="147" width="393" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yT8-jE-Sq8">
+                                        <rect key="frame" x="16" y="15" width="42" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="gss-CD-qPN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaG-XF-g3Y">
+                                        <rect key="frame" x="302" y="15" width="75" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="JZE-3V-Dbh"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="yT8-jE-Sq8" firstAttribute="centerY" secondItem="eNo-ld-mQ5" secondAttribute="centerY" id="6er-kS-HfT"/>
+                                    <constraint firstItem="yT8-jE-Sq8" firstAttribute="leading" secondItem="eNo-ld-mQ5" secondAttribute="leading" constant="16" id="UbY-8J-l11"/>
+                                    <constraint firstAttribute="trailing" secondItem="GaG-XF-g3Y" secondAttribute="trailing" constant="16" id="Zuu-Nt-WXL"/>
+                                    <constraint firstItem="GaG-XF-g3Y" firstAttribute="centerY" secondItem="eNo-ld-mQ5" secondAttribute="centerY" id="cWD-2c-BlW"/>
+                                    <constraint firstAttribute="height" constant="50" id="lg2-TD-tuO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mF0-YZ-abB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -290,11 +320,14 @@
                             <constraint firstItem="f41-CK-g1i" firstAttribute="leading" secondItem="mF0-YZ-abB" secondAttribute="leading" id="4tt-bc-4r6"/>
                             <constraint firstItem="f41-CK-g1i" firstAttribute="trailing" secondItem="mF0-YZ-abB" secondAttribute="trailing" id="6P7-FO-2ON"/>
                             <constraint firstItem="u2v-v5-Duy" firstAttribute="centerX" secondItem="fyf-GM-qKa" secondAttribute="centerX" id="EuR-7T-oei"/>
+                            <constraint firstItem="eNo-ld-mQ5" firstAttribute="leading" secondItem="mF0-YZ-abB" secondAttribute="leading" id="Nue-83-Bg9"/>
                             <constraint firstItem="mF0-YZ-abB" firstAttribute="trailing" secondItem="aJJ-hC-buX" secondAttribute="trailing" constant="60" id="Oad-tl-LHS"/>
                             <constraint firstItem="aJJ-hC-buX" firstAttribute="centerY" secondItem="fyf-GM-qKa" secondAttribute="centerY" constant="-20" id="Qpq-TT-bJN"/>
+                            <constraint firstItem="mF0-YZ-abB" firstAttribute="trailing" secondItem="eNo-ld-mQ5" secondAttribute="trailing" id="TQD-ep-LsG"/>
                             <constraint firstItem="mF0-YZ-abB" firstAttribute="trailing" secondItem="rr9-Pv-Fol" secondAttribute="trailing" id="XnX-4h-lFc"/>
                             <constraint firstItem="u2v-v5-Duy" firstAttribute="top" secondItem="aJJ-hC-buX" secondAttribute="bottom" id="gyb-yC-rrU"/>
-                            <constraint firstItem="rr9-Pv-Fol" firstAttribute="top" secondItem="f41-CK-g1i" secondAttribute="bottom" id="hri-Ya-Hq0"/>
+                            <constraint firstItem="rr9-Pv-Fol" firstAttribute="top" secondItem="eNo-ld-mQ5" secondAttribute="bottom" id="hri-Ya-Hq0"/>
+                            <constraint firstItem="eNo-ld-mQ5" firstAttribute="top" secondItem="f41-CK-g1i" secondAttribute="bottom" id="lHI-FN-sfz"/>
                             <constraint firstItem="aJJ-hC-buX" firstAttribute="leading" secondItem="mF0-YZ-abB" secondAttribute="leading" constant="60" id="naW-W9-3GS"/>
                             <constraint firstItem="f41-CK-g1i" firstAttribute="top" secondItem="mF0-YZ-abB" secondAttribute="top" id="nrA-ht-H63"/>
                             <constraint firstItem="rr9-Pv-Fol" firstAttribute="leading" secondItem="mF0-YZ-abB" secondAttribute="leading" id="saE-Nc-utY"/>
@@ -303,10 +336,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="k45-FD-UOh"/>
                     <connections>
+                        <outlet property="clearAllBtn" destination="GaG-XF-g3Y" id="omQ-2l-fh6"/>
                         <outlet property="emptyListImageView" destination="aJJ-hC-buX" id="TBg-F8-ZlJ"/>
                         <outlet property="emptyListLabel" destination="u2v-v5-Duy" id="KNW-xt-ggK"/>
+                        <outlet property="recentSearchLabel" destination="yT8-jE-Sq8" id="rVZ-ka-fJX"/>
                         <outlet property="recentSearchTableView" destination="rr9-Pv-Fol" id="Bhp-fI-bDt"/>
                         <outlet property="searchBar" destination="f41-CK-g1i" id="aIp-T9-33h"/>
+                        <outlet property="tableViewHeader" destination="eNo-ld-mQ5" id="ZhZ-ri-iKB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhL-Z7-D1U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -382,7 +418,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2k3-ar-VKF">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchResultCollectionViewCell" id="2k3-ar-VKF" customClass="SearchResultCollectionViewCell" customModule="SeSACShopping" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1K9-XB-mDa">
@@ -570,6 +606,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="YKU-1A-o5V"/>
                     <connections>
+                        <outlet property="editView" destination="0ux-NT-mCj" id="kgK-A4-2cp"/>
                         <outlet property="likeCountLabel" destination="QrJ-hD-MJG" id="u91-sC-cJR"/>
                         <outlet property="nicknameLabel" destination="d3h-ht-OIS" id="s4f-Fa-cIk"/>
                         <outlet property="profileImageView" destination="HPo-qE-E9B" id="g26-rX-YHX"/>
@@ -616,7 +653,7 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

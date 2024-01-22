@@ -9,6 +9,7 @@ import UIKit
 
 class SettingViewController: UIViewController {
     
+    @IBOutlet weak var editView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
@@ -34,21 +35,25 @@ class SettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        // 프로필 수정 후 pop 했을 때 반영하기 위해
+        profileImageView.image = UIImage(named: UserDefaultManager.shared.selectedImage)
+        nicknameLabel.text = UserDefaultManager.shared.nickname
         likeCountLabel.text = "\(UserDefaultManager.shared.likeProduct.count)개의 상품을 좋아하고 있어요!"
     }
     
     func configView() {
-        profileImageView.image = UIImage(named: UserDefaultManager.shared.selectedImage)
+        editView.layer.cornerRadius = 15
+    
         profileImageView.contentMode = .scaleAspectFit
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
         profileImageView.layer.borderWidth = 5
         profileImageView.layer.borderColor = UIColor.customColor.pointColor.cgColor
         
-        nicknameLabel.text = UserDefaultManager.shared.nickname
         nicknameLabel.textColor = .white
         nicknameLabel.font = .boldSystemFont(ofSize: 18)
         
         likeCountLabel.font = .boldSystemFont(ofSize: 15)
+        likeCountLabel.textColor = .white
     }
 
     func configNav() {
