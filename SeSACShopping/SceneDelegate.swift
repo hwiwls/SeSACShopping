@@ -13,11 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // 첫 진입 이후에는 true로 바꿔주기
         let value = UserDefaultManager.shared.userState
         
         if value == false {
-            // 코드를 통해 입 시작 화면 설정
             guard let scene = (scene as? UIWindowScene) else { return }
             
             window = UIWindow(windowScene: scene)

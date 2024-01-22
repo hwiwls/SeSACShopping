@@ -107,11 +107,12 @@
 				2EBFFBF32B5A54190029CD35 /* SearchResult */,
 				2EBFFBF42B5A54290029CD35 /* Settings */,
 				2EBFFC0D2B5AA5170029CD35 /* UserDefaultManager.swift */,
+				2EFDF11E2B5D16D400566070 /* APIKey.swift */,
+				2EFDF1202B5D1AF700566070 /* Shopping.swift */,
 				2EBFFBF52B5A55B30029CD35 /* Extension */,
 				2EBFFBE52B5A53900029CD35 /* Assets.xcassets */,
 				2EBFFBE72B5A53900029CD35 /* LaunchScreen.storyboard */,
 				2EBFFBEA2B5A53900029CD35 /* Info.plist */,
-				2EFDF11E2B5D16D400566070 /* APIKey.swift */,
 			);
 			path = SeSACShopping;
 			sourceTree = "<group>";
@@ -149,7 +150,6 @@
 				2EFDF1182B5D0EAD00566070 /* SearchResultViewController.swift */,
 				2EFDF11A2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift */,
 				2EFDF11B2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib */,
-				2EFDF1202B5D1AF700566070 /* Shopping.swift */,
 				2ED6B5C92B5D76F200F25D13 /* ProductDatailViewController.swift */,
 			);
 			path = SearchResult;
@@ -447,6 +447,7 @@
 				DEVELOPMENT_TEAM = Q37X3LG46V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSACShopping/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "정휘진";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -479,6 +480,7 @@
 				DEVELOPMENT_TEAM = Q37X3LG46V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSACShopping/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "정휘진";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

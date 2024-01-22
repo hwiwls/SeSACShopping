@@ -44,6 +44,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydp-2d-nHM">
+                        <rect key="frame" x="122" y="126" width="30" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="2Kk-1D-d0C"/>
+                            <constraint firstAttribute="width" constant="30" id="VoI-Ab-qIk"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain"/>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -51,6 +61,7 @@
                 <constraint firstItem="6SU-as-KMY" firstAttribute="top" secondItem="Qqc-Zm-w4C" secondAttribute="bottom" constant="4" id="2Gu-bf-Kn4"/>
                 <constraint firstAttribute="trailing" secondItem="6SU-as-KMY" secondAttribute="trailing" constant="8" id="3TY-bn-Kvt"/>
                 <constraint firstItem="AOs-Kg-0Mp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="9da-pz-vUg"/>
+                <constraint firstItem="6SU-as-KMY" firstAttribute="top" secondItem="ydp-2d-nHM" secondAttribute="bottom" constant="18" id="Eyj-i9-vng"/>
                 <constraint firstItem="Qqc-Zm-w4C" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FdW-cE-bvC"/>
                 <constraint firstItem="gSd-ns-zHl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Iu2-K2-rgE"/>
                 <constraint firstItem="AOs-Kg-0Mp" firstAttribute="top" secondItem="6SU-as-KMY" secondAttribute="bottom" constant="2" id="PWM-rf-3cN"/>
@@ -58,11 +69,13 @@
                 <constraint firstAttribute="trailing" secondItem="gSd-ns-zHl" secondAttribute="trailing" constant="8" id="Rpg-Ct-iiO"/>
                 <constraint firstItem="6SU-as-KMY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="UzZ-gY-T35"/>
                 <constraint firstAttribute="trailing" secondItem="AOs-Kg-0Mp" secondAttribute="trailing" constant="8" id="Xk8-RJ-4SW"/>
+                <constraint firstAttribute="trailing" secondItem="ydp-2d-nHM" secondAttribute="trailing" constant="18" id="iNg-tq-Wd6"/>
                 <constraint firstItem="Qqc-Zm-w4C" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="utb-R3-1Jg"/>
                 <constraint firstAttribute="trailing" secondItem="Qqc-Zm-w4C" secondAttribute="trailing" id="xVt-tq-rA0"/>
             </constraints>
             <size key="customSize" width="170" height="262"/>
             <connections>
+                <outlet property="likeBtn" destination="ydp-2d-nHM" id="P8o-9Z-4ct"/>
                 <outlet property="mallNameLabel" destination="6SU-as-KMY" id="e02-n1-fHR"/>
                 <outlet property="priceLabel" destination="gSd-ns-zHl" id="l6J-b6-a72"/>
                 <outlet property="productImageView" destination="Qqc-Zm-w4C" id="WmA-3D-XBa"/>

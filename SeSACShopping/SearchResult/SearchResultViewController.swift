@@ -34,14 +34,98 @@ class SearchResultViewController: UIViewController {
         configView()
         configBtn()
         configNav()
-        callRequest(text: searchBarInput)
+        callRequestBySim(text: searchBarInput)
         start = 1
     }
     
-    func callRequest(text: String) {
+    func callRequestBySim(text: String) {
         let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
-        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)"
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=sim"
+        
+        let headers: HTTPHeaders = [
+            "X-Naver-Client-Id": APIKey.clientID,
+            "X-Naver-Client-Secret": APIKey.clientSecret
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
+            switch response.result {
+            case .success(let success):
+                if self.start == 1 {
+                    self.list = success
+                } else {
+                    self.list.items.append(contentsOf: success.items)
+                    self.totalCount = success.total
+                }
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
+                
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func callRequestByDate(text: String) {
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=date"
+        
+        let headers: HTTPHeaders = [
+            "X-Naver-Client-Id": APIKey.clientID,
+            "X-Naver-Client-Secret": APIKey.clientSecret
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
+            switch response.result {
+            case .success(let success):
+                if self.start == 1 {
+                    self.list = success
+                } else {
+                    self.list.items.append(contentsOf: success.items)
+                    self.totalCount = success.total
+                }
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
+                
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func callRequestByAsc(text: String) {
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=asc"
+        
+        let headers: HTTPHeaders = [
+            "X-Naver-Client-Id": APIKey.clientID,
+            "X-Naver-Client-Secret": APIKey.clientSecret
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
+            switch response.result {
+            case .success(let success):
+                if self.start == 1 {
+                    self.list = success
+                } else {
+                    self.list.items.append(contentsOf: success.items)
+                    self.totalCount = success.total
+                }
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
+                
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func callRequestByDsc(text: String) {
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=dsc"
         
         let headers: HTTPHeaders = [
             "X-Naver-Client-Id": APIKey.clientID,
@@ -104,6 +188,19 @@ class SearchResultViewController: UIViewController {
         }
         sender.isSelected = true
         updateButtonColor(sender)
+        
+        switch sender {
+        case accuracyBtn:
+            callRequestBySim(text: searchBarInput)
+        case dateOrederBtn:
+            callRequestByDate(text: searchBarInput)
+        case highPriceBtn:
+            callRequestByDsc(text: searchBarInput)
+        case lowPriceBtn:
+            callRequestByAsc(text: searchBarInput)
+        default:
+            break
+        }
     }
 
     
@@ -173,10 +270,8 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
         for item in indexPaths {
             // 카카오 책 API에 있던 isEnd 변수를 이런식으로 대체하는 게 맞는지 모르겠습니다.(totalCount는 70으로 초기화하였음)
             if list.items.count - 3 == item.row && list.items.count < totalCount {
-//                print(list.items.count)
-//                print(totalCount)
                 start += 30
-                callRequest(text: searchBarInput)
+                callRequestBySim(text: searchBarInput)
             }
         }
     }

@@ -78,6 +78,7 @@ class ProfileSettingViewController: UIViewController {
         nicknameTextField.placeholder = "닉네임을 입력해주세요 :)"
         nicknameTextField.attributedPlaceholder = NSAttributedString(string: "닉네임을 입력해주세요 :)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         nicknameTextField.textColor = .white
+        nicknameTextField.text = UserDefaultManager.shared.nickname
         
         borderView.backgroundColor = .white
         

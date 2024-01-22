@@ -30,6 +30,12 @@ class SettingViewController: UIViewController {
         settingTableView.rowHeight = 40
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        likeCountLabel.text = "\(UserDefaultManager.shared.likeProduct.count)개의 상품을 좋아하고 있어요!"
+    }
+    
     func configView() {
         profileImageView.image = UIImage(named: UserDefaultManager.shared.selectedImage)
         profileImageView.contentMode = .scaleAspectFit
@@ -39,8 +45,9 @@ class SettingViewController: UIViewController {
         
         nicknameLabel.text = UserDefaultManager.shared.nickname
         nicknameLabel.textColor = .white
-        nicknameLabel.font = .boldSystemFont(ofSize: 17)
+        nicknameLabel.font = .boldSystemFont(ofSize: 18)
         
+        likeCountLabel.font = .boldSystemFont(ofSize: 15)
     }
 
     func configNav() {

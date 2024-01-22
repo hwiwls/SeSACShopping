@@ -114,4 +114,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             recentSearchTableView.reloadData()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController
+        vc.searchBarInput = UserDefaultManager.shared.recentSearchWords[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

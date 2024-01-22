@@ -461,7 +461,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="PointColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="Rnd-vf-9Xs" kind="relationship" relationship="viewControllers" id="2Oe-2a-KAg"/>
@@ -475,7 +476,6 @@
         <!--검색-->
         <scene sceneID="qM9-WT-AWB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="30K-pa-wr1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rnd-vf-9Xs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="Nes-xd-N3n"/>
                     <toolbarItems/>
@@ -488,6 +488,7 @@
                         <segue destination="7Ia-BX-ZPB" kind="relationship" relationship="rootViewController" id="sAy-mK-At9"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="30K-pa-wr1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="990.07633587786256" y="788.73239436619724"/>
         </scene>
