@@ -23,6 +23,7 @@ class UserDefaultManager {
         case recentSearchWords   // 최근 검색어
         case userState  // 회원 가입 상태 유무. true일 경우 가입 완료
         case likeProduct   // 상품 좋아요
+        case isSetting    // 프로필 설정, 프로필 편집 구별
     }
     
     let ud = UserDefaults.standard
@@ -71,6 +72,16 @@ class UserDefaultManager {
             ud.setValue(newValue, forKey: UDKey.likeProduct.rawValue)
         }
     }
+    
+    var isSetting: Bool {
+        get {
+            ud.bool(forKey: UDKey.isSetting.rawValue)
+        }
+        set {
+            ud.setValue(newValue, forKey: UDKey.isSetting.rawValue)
+        }
+    }
+
     
     /*
      다음 함수를 실행해도 프로젝트를 다시 실행시키면 userdefault 값이 남아있다(?)는 문제가 있습니다.

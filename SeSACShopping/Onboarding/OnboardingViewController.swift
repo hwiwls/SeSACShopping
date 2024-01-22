@@ -35,6 +35,7 @@ class OnboardingViewController: UIViewController {
     }
    
     @IBAction func startBtnClicked(_ sender: UIButton) {
+        UserDefaultManager.shared.isSetting = true
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "ProfileSettingViewController") as! ProfileSettingViewController
         self.navigationController?.pushViewController(vc, animated: true)

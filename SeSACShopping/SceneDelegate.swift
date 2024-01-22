@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         let value = UserDefaultManager.shared.userState
-        
+        print("\(value)입니데이~~~")
         if value == false {
             guard let scene = (scene as? UIWindowScene) else { return }
             

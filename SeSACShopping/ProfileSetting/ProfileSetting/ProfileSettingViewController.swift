@@ -37,6 +37,14 @@ class ProfileSettingViewController: UIViewController {
 
         let selectedImg = UserDefaultManager.shared.selectedImage
         profileImageView.image = UIImage(named: selectedImg)
+        
+        if UserDefaultManager.shared.isSetting == false {
+            self.navigationItem.title = "프로필 편집"
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        } else {
+            self.navigationItem.title = "프로필 설정"
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        }
     }
     
     @objc func completeBtnClicked() {
@@ -50,9 +58,6 @@ class ProfileSettingViewController: UIViewController {
     }
     
     func configNav() {
-        navigationItem.title = "프로필 설정"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
         let item = UIBarButtonItem(image: UIImage(systemName: "chevron.left")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), style: .plain, target: self, action: #selector(backToPrevios))
         navigationItem.leftBarButtonItem = item
     }

@@ -521,12 +521,25 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcD-SW-Zqg">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="88.333333333333329"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="ZD9-BA-pSE" appends="YES" id="eUy-3n-ZAL"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0ux-NT-mCj" secondAttribute="height" multiplier="4:1" id="077-vD-bcX"/>
                                     <constraint firstAttribute="trailing" secondItem="QrJ-hD-MJG" secondAttribute="trailing" constant="30" id="33W-zb-Rvy"/>
                                     <constraint firstItem="HPo-qE-E9B" firstAttribute="leading" secondItem="0ux-NT-mCj" secondAttribute="leading" constant="12" id="7q4-dF-7AJ"/>
+                                    <constraint firstItem="WcD-SW-Zqg" firstAttribute="top" secondItem="0ux-NT-mCj" secondAttribute="top" id="9P5-bq-L5O"/>
+                                    <constraint firstItem="WcD-SW-Zqg" firstAttribute="leading" secondItem="0ux-NT-mCj" secondAttribute="leading" id="9us-xp-ZbU"/>
+                                    <constraint firstAttribute="bottom" secondItem="WcD-SW-Zqg" secondAttribute="bottom" id="Coo-BL-jIj"/>
+                                    <constraint firstAttribute="trailing" secondItem="WcD-SW-Zqg" secondAttribute="trailing" id="MD9-hU-Lol"/>
                                     <constraint firstItem="QrJ-hD-MJG" firstAttribute="leading" secondItem="HPo-qE-E9B" secondAttribute="trailing" constant="30" id="Mrf-lN-3v4"/>
                                     <constraint firstItem="QrJ-hD-MJG" firstAttribute="top" secondItem="d3h-ht-OIS" secondAttribute="bottom" constant="4" id="SMY-wH-Ntn"/>
                                     <constraint firstAttribute="trailing" secondItem="d3h-ht-OIS" secondAttribute="trailing" constant="30" id="YLC-Q0-4Fk"/>
@@ -560,10 +573,16 @@
                         <outlet property="likeCountLabel" destination="QrJ-hD-MJG" id="u91-sC-cJR"/>
                         <outlet property="nicknameLabel" destination="d3h-ht-OIS" id="s4f-Fa-cIk"/>
                         <outlet property="profileImageView" destination="HPo-qE-E9B" id="g26-rX-YHX"/>
+                        <outlet property="profileViewTapGesture" destination="ZD9-BA-pSE" id="8qP-DK-a1D"/>
                         <outlet property="settingTableView" destination="AOM-Im-EQv" id="6ao-FE-X9x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P8e-A4-EPE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ZD9-BA-pSE">
+                    <connections>
+                        <action selector="profileViewClicked:" destination="x2b-ME-Duq" id="5c4-Sf-GDA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1909.1603053435115" y="1576.7605633802818"/>
         </scene>
@@ -597,7 +616,7 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

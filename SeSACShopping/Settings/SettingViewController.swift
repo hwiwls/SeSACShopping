@@ -13,6 +13,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var settingTableView: UITableView!
+    @IBOutlet var profileViewTapGesture: UITapGestureRecognizer!
     
     let contents = ["공지사항", "자주 묻는 질문", "1:1 문의", "알림 설정", "처음부터 시작하기"]
     
@@ -54,6 +55,14 @@ class SettingViewController: UIViewController {
         navigationItem.title = "설정"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
+    
+    @IBAction func profileViewClicked(_ sender: UITapGestureRecognizer) {
+        UserDefaultManager.shared.isSetting = false
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ProfileSettingViewController") as! ProfileSettingViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
