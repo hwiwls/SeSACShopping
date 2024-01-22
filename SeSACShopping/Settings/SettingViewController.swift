@@ -40,7 +40,9 @@ class SettingViewController: UIViewController {
         nicknameLabel.text = UserDefaultManager.shared.nickname
         likeCountLabel.text = "\(UserDefaultManager.shared.likeProduct.count)개의 상품을 좋아하고 있어요!"
     }
-    
+}
+
+extension SettingViewController {
     func configView() {
         editView.layer.cornerRadius = 15
     
@@ -67,7 +69,6 @@ class SettingViewController: UIViewController {
         let vc = sb.instantiateViewController(withIdentifier: "ProfileSettingViewController") as! ProfileSettingViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {

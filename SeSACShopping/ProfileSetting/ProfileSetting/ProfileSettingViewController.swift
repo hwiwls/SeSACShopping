@@ -46,7 +46,9 @@ class ProfileSettingViewController: UIViewController {
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         }
     }
-    
+}
+
+extension ProfileSettingViewController {
     @objc func completeBtnClicked() {
         UserDefaultManager.shared.nickname = nicknameTextField.text!
         UserDefaultManager.shared.userState = true

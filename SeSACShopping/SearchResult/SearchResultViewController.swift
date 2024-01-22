@@ -38,118 +38,15 @@ class SearchResultViewController: UIViewController {
         start = 1
     }
     
-    func callRequestBySim(text: String) {
-        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=sim"
-        
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": APIKey.clientID,
-            "X-Naver-Client-Secret": APIKey.clientSecret
-        ]
-
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
-            switch response.result {
-            case .success(let success):
-                if self.start == 1 {
-                    self.list = success
-                } else {
-                    self.list.items.append(contentsOf: success.items)
-                    self.totalCount = success.total
-                }
-                self.searchResultCollecitonView.reloadData()
-                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
-                
-            case .failure(let failure):
-                print(failure)
-            }
-        }
+        // CollectionView를 리로드합니다.
+        searchResultCollecitonView.reloadData()
     }
-    
-    func callRequestByDate(text: String) {
-        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=date"
-        
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": APIKey.clientID,
-            "X-Naver-Client-Secret": APIKey.clientSecret
-        ]
+}
 
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
-            switch response.result {
-            case .success(let success):
-                if self.start == 1 {
-                    self.list = success
-                } else {
-                    self.list.items.append(contentsOf: success.items)
-                    self.totalCount = success.total
-                }
-                self.searchResultCollecitonView.reloadData()
-                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
-                
-            case .failure(let failure):
-                print(failure)
-            }
-        }
-    }
-    
-    func callRequestByAsc(text: String) {
-        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=asc"
-        
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": APIKey.clientID,
-            "X-Naver-Client-Secret": APIKey.clientSecret
-        ]
-
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
-            switch response.result {
-            case .success(let success):
-                if self.start == 1 {
-                    self.list = success
-                } else {
-                    self.list.items.append(contentsOf: success.items)
-                    self.totalCount = success.total
-                }
-                self.searchResultCollecitonView.reloadData()
-                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
-                
-            case .failure(let failure):
-                print(failure)
-            }
-        }
-    }
-    
-    func callRequestByDsc(text: String) {
-        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=dsc"
-        
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": APIKey.clientID,
-            "X-Naver-Client-Secret": APIKey.clientSecret
-        ]
-
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
-            switch response.result {
-            case .success(let success):
-                if self.start == 1 {
-                    self.list = success
-                } else {
-                    self.list.items.append(contentsOf: success.items)
-                    self.totalCount = success.total
-                }
-                self.searchResultCollecitonView.reloadData()
-                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
-                
-            case .failure(let failure):
-                print(failure)
-            }
-        }
-    }
-    
+extension SearchResultViewController {
     func configBtn() {
         accuracyBtn.setTitle("정확도", for: .normal)
         accuracyBtn.isSelected = true
@@ -202,7 +99,6 @@ class SearchResultViewController: UIViewController {
             break
         }
     }
-
     
     func configView() {
         resultCountLabel.font = .boldSystemFont(ofSize: 14)
@@ -239,7 +135,6 @@ class SearchResultViewController: UIViewController {
     @objc func backToPrevios() {
         navigationController?.popViewController(animated: true)
     }
-    
 }
 
 extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -260,8 +155,10 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         let vc = sb.instantiateViewController(withIdentifier: "ProductDatailViewController") as! ProductDatailViewController
         vc.productTitle = list.items[indexPath.row].title
         vc.productUrl = list.items[indexPath.row].link
+        vc.productID = list.items[indexPath.row].productID 
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
 }
 
 extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
@@ -277,3 +174,136 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
     }
 }
     
+extension SearchResultViewController {
+    func callRequestBySim(text: String) {
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=sim"
+        
+        let headers: HTTPHeaders = [
+            "X-Naver-Client-Id": APIKey.clientID,
+            "X-Naver-Client-Secret": APIKey.clientSecret
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
+            switch response.result {
+            case .success(let success):
+                if self.start == 1 {
+                    self.list = success
+                } else {
+                    self.list.items.append(contentsOf: success.items)
+                    self.totalCount = success.total
+                }
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
+                
+                // 재검색시 스크롤 상단으로
+                if self.start == 1 {
+                    self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                }
+                
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func callRequestByDate(text: String) {
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=date"
+        
+        let headers: HTTPHeaders = [
+            "X-Naver-Client-Id": APIKey.clientID,
+            "X-Naver-Client-Secret": APIKey.clientSecret
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
+            switch response.result {
+            case .success(let success):
+                if self.start == 1 {
+                    self.list = success
+                } else {
+                    self.list.items.append(contentsOf: success.items)
+                    self.totalCount = success.total
+                }
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
+                
+                // 재검색시 스크롤 상단으로
+                if self.start == 1 {
+                    self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                }
+                
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func callRequestByAsc(text: String) {
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=asc"
+        
+        let headers: HTTPHeaders = [
+            "X-Naver-Client-Id": APIKey.clientID,
+            "X-Naver-Client-Secret": APIKey.clientSecret
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
+            switch response.result {
+            case .success(let success):
+                if self.start == 1 {
+                    self.list = success
+                } else {
+                    self.list.items.append(contentsOf: success.items)
+                    self.totalCount = success.total
+                }
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
+                
+                // 재검색시 스크롤 상단으로
+                if self.start == 1 {
+                    self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                }
+                
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func callRequestByDsc(text: String) {
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=30&start=\(start)&sort=dsc"
+        
+        let headers: HTTPHeaders = [
+            "X-Naver-Client-Id": APIKey.clientID,
+            "X-Naver-Client-Secret": APIKey.clientSecret
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: Shopping.self) { response in
+            switch response.result {
+            case .success(let success):
+                if self.start == 1 {
+                    self.list = success
+                } else {
+                    self.list.items.append(contentsOf: success.items)
+                    self.totalCount = success.total
+                }
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(success.total)개의 검색 결과"
+                
+                // 재검색시 스크롤 상단으로
+                if self.start == 1 {
+                    self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                }
+                
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+}

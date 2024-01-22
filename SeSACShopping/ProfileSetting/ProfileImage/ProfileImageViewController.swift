@@ -25,7 +25,9 @@ class ProfileImageViewController: UIViewController {
         configNav()
         configView()
     }
-    
+}
+
+extension ProfileImageViewController {
     func configNav() {
         navigationItem.title = "프로필 설정"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
