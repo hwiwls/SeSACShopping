@@ -6,26 +6,32 @@
 //
 
 import UIKit
+import SnapKit
 
 class MainViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var emptyListImageView: UIImageView!
     @IBOutlet weak var emptyListLabel: UILabel!
-    @IBOutlet weak var recentSearchTableView: UITableView!
+//    @IBOutlet weak var recentSearchTableView: UITableView!
     @IBOutlet weak var tableViewHeader: UIView!
     @IBOutlet weak var recentSearchLabel: UILabel!
     @IBOutlet weak var clearAllBtn: UIButton!
     
+    let recentSearchTableView: UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        recentSearchTableView.backgroundColor = .clear
         
         searchBar.delegate = self
+        recentSearchTableView.backgroundColor = .clear
         recentSearchTableView.delegate = self
         recentSearchTableView.dataSource = self
-        recentSearchTableView.register(UINib(nibName: "RecentSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "RecentSearchTableViewCell")
+        recentSearchTableView.register(RecentSearchTableViewCell.self, forCellReuseIdentifier: "RecentSearchTableViewCell")
         recentSearchTableView.rowHeight = 55
         
         configView()
@@ -77,6 +83,18 @@ extension MainViewController {
         emptyListLabel.text = "최근 검색어가 없어요"
         emptyListLabel.textColor = .white
         emptyListLabel.font = .boldSystemFont(ofSize: 18)
+        
+        layout()
+    }
+    
+    func layout() {
+        view.addSubview(recentSearchTableView)
+        
+        recentSearchTableView.snp.makeConstraints {
+            $0.top.equalTo(tableViewHeader.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
     func configNav() {
@@ -127,12 +145,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
         
-        cell.magnifyingglassImageView.image = UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysOriginal).withTintColor(.white)
         cell.searchWordLabel.text = UserDefaultManager.shared.recentSearchWords[indexPath.row]
-        cell.searchWordLabel.textColor = .white
-        cell.searchWordLabel.font = .systemFont(ofSize: 15)
         
-        cell.deleteWordBtn.setImage(UIImage(systemName: "xmark")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), for: .normal)
         // tag를 전달해서 해당 요소를 삭제할 수 있게끔 함
         cell.deleteWordBtn.tag = indexPath.row
         cell.deleteWordBtn.addTarget(self, action: #selector(deleteWord(_:)), for: .touchUpInside)

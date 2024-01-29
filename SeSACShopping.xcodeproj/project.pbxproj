@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2E32D2AF2B5BACB1007D60F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E32D2AE2B5BACB1007D60F8 /* MainViewController.swift */; };
 		2E32D2B22B5BACDE007D60F8 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E32D2B02B5BACDE007D60F8 /* RecentSearchTableViewCell.swift */; };
-		2E32D2B32B5BACDE007D60F8 /* RecentSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E32D2B12B5BACDE007D60F8 /* RecentSearchTableViewCell.xib */; };
 		2EBFFBDD2B5A538F0029CD35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFBDC2B5A538F0029CD35 /* AppDelegate.swift */; };
 		2EBFFBDF2B5A538F0029CD35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFBDE2B5A538F0029CD35 /* SceneDelegate.swift */; };
 		2EBFFBE42B5A538F0029CD35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBFFBE22B5A538F0029CD35 /* Main.storyboard */; };
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		2E32D2AE2B5BACB1007D60F8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2E32D2B02B5BACDE007D60F8 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
-		2E32D2B12B5BACDE007D60F8 /* RecentSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentSearchTableViewCell.xib; sourceTree = "<group>"; };
 		2EBFFBD92B5A538F0029CD35 /* SeSACShopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACShopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBFFBDC2B5A538F0029CD35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBFFBDE2B5A538F0029CD35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			children = (
 				2E32D2AE2B5BACB1007D60F8 /* MainViewController.swift */,
 				2E32D2B02B5BACDE007D60F8 /* RecentSearchTableViewCell.swift */,
-				2E32D2B12B5BACDE007D60F8 /* RecentSearchTableViewCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -301,7 +298,6 @@
 			files = (
 				2EBFFBE92B5A53900029CD35 /* LaunchScreen.storyboard in Resources */,
 				2EFDF11D2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib in Resources */,
-				2E32D2B32B5BACDE007D60F8 /* RecentSearchTableViewCell.xib in Resources */,
 				2EBFFBE62B5A53900029CD35 /* Assets.xcassets in Resources */,
 				2EBFFC0C2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib in Resources */,
 				2ED6B5D02B5D817F00F25D13 /* SettingTableViewCell.xib in Resources */,

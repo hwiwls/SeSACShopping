@@ -243,10 +243,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rr9-Pv-Fol">
-                                <rect key="frame" x="0.0" y="197" width="393" height="572"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNo-ld-mQ5">
                                 <rect key="frame" x="0.0" y="147" width="393" height="50"/>
                                 <subviews>
@@ -288,14 +284,10 @@
                             <constraint firstItem="mF0-YZ-abB" firstAttribute="trailing" secondItem="aJJ-hC-buX" secondAttribute="trailing" constant="60" id="Oad-tl-LHS"/>
                             <constraint firstItem="aJJ-hC-buX" firstAttribute="centerY" secondItem="fyf-GM-qKa" secondAttribute="centerY" constant="-20" id="Qpq-TT-bJN"/>
                             <constraint firstItem="mF0-YZ-abB" firstAttribute="trailing" secondItem="eNo-ld-mQ5" secondAttribute="trailing" id="TQD-ep-LsG"/>
-                            <constraint firstItem="mF0-YZ-abB" firstAttribute="trailing" secondItem="rr9-Pv-Fol" secondAttribute="trailing" id="XnX-4h-lFc"/>
                             <constraint firstItem="u2v-v5-Duy" firstAttribute="top" secondItem="aJJ-hC-buX" secondAttribute="bottom" id="gyb-yC-rrU"/>
-                            <constraint firstItem="rr9-Pv-Fol" firstAttribute="top" secondItem="eNo-ld-mQ5" secondAttribute="bottom" id="hri-Ya-Hq0"/>
                             <constraint firstItem="eNo-ld-mQ5" firstAttribute="top" secondItem="f41-CK-g1i" secondAttribute="bottom" id="lHI-FN-sfz"/>
                             <constraint firstItem="aJJ-hC-buX" firstAttribute="leading" secondItem="mF0-YZ-abB" secondAttribute="leading" constant="60" id="naW-W9-3GS"/>
                             <constraint firstItem="f41-CK-g1i" firstAttribute="top" secondItem="mF0-YZ-abB" secondAttribute="top" id="nrA-ht-H63"/>
-                            <constraint firstItem="rr9-Pv-Fol" firstAttribute="leading" secondItem="mF0-YZ-abB" secondAttribute="leading" id="saE-Nc-utY"/>
-                            <constraint firstItem="mF0-YZ-abB" firstAttribute="bottom" secondItem="rr9-Pv-Fol" secondAttribute="bottom" id="tkf-ZB-MVa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="k45-FD-UOh"/>
@@ -304,7 +296,6 @@
                         <outlet property="emptyListImageView" destination="aJJ-hC-buX" id="TBg-F8-ZlJ"/>
                         <outlet property="emptyListLabel" destination="u2v-v5-Duy" id="KNW-xt-ggK"/>
                         <outlet property="recentSearchLabel" destination="yT8-jE-Sq8" id="rVZ-ka-fJX"/>
-                        <outlet property="recentSearchTableView" destination="rr9-Pv-Fol" id="Bhp-fI-bDt"/>
                         <outlet property="searchBar" destination="f41-CK-g1i" id="aIp-T9-33h"/>
                         <outlet property="tableViewHeader" destination="eNo-ld-mQ5" id="ZhZ-ri-iKB"/>
                     </connections>
@@ -607,7 +598,7 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
