@@ -17,6 +17,7 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
     */
     @IBOutlet weak var profileImageView: UIImageView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear

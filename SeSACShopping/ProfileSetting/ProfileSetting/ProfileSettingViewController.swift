@@ -6,16 +6,25 @@
 //
 
 import UIKit
-import TextFieldEffects
+import SnapKit
 
 class ProfileSettingViewController: UIViewController {
     
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var cameraBtn: UIButton!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var completeBtn: UIButton!
+    
+    let profileImageView: ProfileImageView = {
+        let imageView = ProfileImageView(frame: .zero)
+        return imageView
+    }()
+    
+    let cameraBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "camera"), for: .normal)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +71,24 @@ extension ProfileSettingViewController {
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
+        // 1. 컨텐츠
+        let content = UNMutableNotificationContent()
+        content.title = "(광고)\(UserDefaultManager.shared.nickname)님 안 주무시나요?!"
+        content.body = "쇼핑리스트를 관리해보세요"
+        content.badge = 1
+
+        // 2.1. 캘린더 기반
+        var component = DateComponents()
+        component.hour = 23
+        component.minute = 45
+                
+        let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+                
+        // 3. 요청
+        let request = UNNotificationRequest(identifier: "\(Date())", content: content, trigger: calendarTrigger)
+
+        // 4. iOS system에 등록
+        UNUserNotificationCenter.current().add(request)
     }
     
     func configNav() {
@@ -76,12 +103,18 @@ extension ProfileSettingViewController {
     }
     
     func configView() {
-        let selectedImg = UserDefaultManager.shared.selectedImage
-        profileImageView.image = UIImage(named: selectedImg)
-        profileImageView.contentMode = .scaleAspectFit
-        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
-        profileImageView.layer.borderWidth = 5
-        profileImageView.layer.borderColor = UIColor.customColor.pointColor.cgColor
+        view.addSubview(profileImageView)
+        view.addSubview(cameraBtn)
+        profileImageView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(90)
+        }
+        cameraBtn.snp.makeConstraints {
+            $0.trailing.equalTo(profileImageView.snp.trailing)
+            $0.bottom.equalTo(profileImageView.snp.bottom)
+            $0.height.width.equalTo(25)
+        }
         
         cameraBtn.setImage(UIImage(named: "camera"), for: .normal)
         cameraBtn.layer.cornerRadius = cameraBtn.frame.width / 2
@@ -104,6 +137,13 @@ extension ProfileSettingViewController {
         completeBtn.layer.cornerRadius = 10
         completeBtn.isEnabled = false
         completeBtn.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    // 이 메소드는 뷰의 레이아웃이 결정된 후에 호출되므로, 이 시점에서 이미지 뷰의 너비를 알 수 있
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        cameraBtn.layer.cornerRadius = cameraBtn.frame.size.width / 2
     }
     
     @IBAction func profileImageViewClicked(_ sender: UITapGestureRecognizer) {

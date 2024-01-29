@@ -10,11 +10,15 @@ import UIKit
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var editView: UIView!
-    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var settingTableView: UITableView!
     @IBOutlet var profileViewTapGesture: UITapGestureRecognizer!
+    
+    let profileImageView: ProfileImageView = {
+        let imageView = ProfileImageView(frame: .zero)
+        return imageView
+    }()
     
     let contents = ["공지사항", "자주 묻는 질문", "1:1 문의", "알림 설정", "처음부터 시작하기"]
     
@@ -46,16 +50,26 @@ extension SettingViewController {
     func configView() {
         editView.layer.cornerRadius = 15
     
-        profileImageView.contentMode = .scaleAspectFit
-        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
-        profileImageView.layer.borderWidth = 5
-        profileImageView.layer.borderColor = UIColor.customColor.pointColor.cgColor
+        view.addSubview(profileImageView)
+        
+        profileImageView.snp.makeConstraints {
+            $0.top.equalTo(editView.snp.top).offset(12)
+            $0.leading.equalTo(editView.snp.leading).offset(12)
+            $0.bottom.equalTo(editView.snp.bottom).offset(-12)
+            $0.width.equalTo(profileImageView.snp.height).multipliedBy(1.0)
+        }
         
         nicknameLabel.textColor = .white
         nicknameLabel.font = .boldSystemFont(ofSize: 18)
         
         likeCountLabel.font = .boldSystemFont(ofSize: 15)
         likeCountLabel.textColor = .white
+    }
+    
+    // 이 메소드는 뷰의 레이아웃이 결정된 후에 호출되므로, 이 시점에서 이미지 뷰의 너비를 알 수 있
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        profileImageView.layer.cornerRadius =  profileImageView.frame.size.width / 2
     }
 
     func configNav() {

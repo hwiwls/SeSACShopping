@@ -11,8 +11,12 @@ let imageList = ["profile1", "profile2", "profile3", "profile4", "profile5", "pr
 
 class ProfileImageViewController: UIViewController {
 
-    @IBOutlet weak var selectedProfileImageView: UIImageView!
     @IBOutlet weak var profileImageCollectionView: UICollectionView!
+    
+    let selectedProfileImageView: ProfileImageView = {
+        let imageView = ProfileImageView(frame: .zero)
+        return imageView
+    }()
     
     lazy var randomImage = imageList.randomElement() ?? "profile1"
     
@@ -41,11 +45,13 @@ extension ProfileImageViewController {
     }
     
     func configView() {
-        selectedProfileImageView.image = UIImage(named: selectedImage)
-        selectedProfileImageView.contentMode = .scaleAspectFill
-        selectedProfileImageView.layer.cornerRadius = selectedProfileImageView.frame.width / 2
-        selectedProfileImageView.layer.borderWidth = 5
-        selectedProfileImageView.layer.borderColor = UIColor.customColor.pointColor.cgColor
+        view.addSubview(selectedProfileImageView)
+        
+        selectedProfileImageView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(150)
+        }
         
         let xib = UINib(nibName: "ProfileImageCollectionViewCell", bundle: nil) // 실제 파일 이름을 적어주어야 한다.
         profileImageCollectionView.register(xib, forCellWithReuseIdentifier: "ProfileImageCollectionViewCell")
@@ -64,6 +70,12 @@ extension ProfileImageViewController {
         layout.scrollDirection = .vertical
         
         profileImageCollectionView.collectionViewLayout = layout
+    }
+    
+    // 이 메소드는 뷰의 레이아웃이 결정된 후에 호출되므로, 이 시점에서 이미지 뷰의 너비를 알 수 있
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        selectedProfileImageView.layer.cornerRadius = selectedProfileImageView.frame.size.width / 2
     }
 }
 
@@ -85,6 +97,9 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
         selectedImage = imageList[indexPath.row]
         UserDefaultManager.shared.selectedImage = selectedImage
         selectedProfileImageView.image = UIImage(named: selectedImage)
+        // 테두리가 보이지 않는다는 문제가 있습니다.
+        selectedProfileImageView.layer.borderWidth = 5
+        selectedProfileImageView.layer.borderColor = UIColor.customColor.pointColor.cgColor
         profileImageCollectionView.reloadData()
     }
     
