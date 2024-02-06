@@ -8,6 +8,14 @@
 import UIKit
 import SnapKit
 
+
+enum ValidationError: Error {
+    case emptyString    // 빈 문자열
+    case isCharLimit    // 글자수 제한(2글자~10글자)
+    case specialChar    // 특수문자
+    case isNumber      // 숫자
+}
+
 class ProfileSettingViewController: UIViewController {
     
     @IBOutlet weak var nicknameTextField: UITextField!
@@ -156,25 +164,60 @@ extension ProfileSettingViewController {
 
 extension ProfileSettingViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        let specialChar = ["@", "#", "$", "%"]
-        
         guard let text = textField.text else {
             return
         }
         
-        if text.count < 2 || text.count > 9 || text.isEmpty {
-            stateLabel.text = "2글자 이상 10글자 미만으로 설정해주세요"
-            completeBtn.isEnabled = false
-        } else if specialChar.contains(where: text.contains) {
-            stateLabel.text = "닉네임에 @, #, $, %는 포함할 수 없어요"
-            completeBtn.isEnabled = false
-        } else if text.contains(where: { $0.isNumber }) {
-            stateLabel.text = "닉네임에 숫자는 포함할 수 없어요"
-            completeBtn.isEnabled = false
-        } else {
+        do {
+            _ = try validation(text: text)
             stateLabel.text = "사용할 수 있는 닉네임이에요"
             completeBtn.isEnabled = true
+        } catch {
+            switch error {
+            case ValidationError.emptyString:
+                print("닉네임을 입력해주세요")
+                stateLabel.text = "닉네임을 입력해주세요"
+            case ValidationError.isCharLimit:
+                print("2글자 이상 10글자 미만이 아닙니다.")
+                stateLabel.text = "2글자 이상 10글자 미만으로 설정해주세요"
+            case ValidationError.specialChar:
+                print("닉네임에 @, #, $, %는 포함할 수 없어요")
+                stateLabel.text = "닉네임에 @, #, $, %는 포함할 수 없어요"
+            case ValidationError.isNumber:
+                print("닉네임에 숫자는 포함할 수 없어요")
+                stateLabel.text = "닉네임에 숫자는 포함할 수 없어요"
+            default:
+                print("default error")
+            }
         }
+        
+    }
+    
+    func validation(text: String) throws -> Bool {
+        let specialChar = ["@", "#", "$", "%"]
+        
+        guard !(text.isEmpty) else {
+            print("empty")
+            throw ValidationError.emptyString
+        }
+        
+        print("textCount: \(text.count)")
+        guard (text.count > 1 && text.count < 10) else {
+            print("isCharLimit")
+            throw ValidationError.isCharLimit
+        }
+        
+        guard !(text.contains(where: { $0.isNumber })) else {
+            print("isNumber")
+            throw ValidationError.isNumber
+        }
+        
+        guard !(specialChar.contains(where: text.contains)) else {
+            print("specialChar")
+            throw ValidationError.specialChar
+        }
+        
+        return true
     }
     
     // return 버튼 누르면 키보드 내려가게
@@ -183,3 +226,4 @@ extension ProfileSettingViewController: UITextFieldDelegate {
         return true
     }
 }
+
