@@ -191,6 +191,31 @@ extension SearchResultViewController {
                 self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
             }
         }
+        
+        ShoppingAPISessionManager.shared.callRequestBySim2(text: text, start: start) { shopping, error in
+            if error == nil {
+                guard let shopping = shopping else { return }
+                
+                if self.start == 1 {
+                    self.list = shopping
+                } else {
+                    self.list.items.append(contentsOf: shopping.items)
+                    self.totalCount = shopping.total
+                }
+                
+                DispatchQueue.main.async {
+                    self.searchResultCollecitonView.reloadData()
+                    self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
+                    
+                    // 재검색시 스크롤 상단으로
+                    if self.start == 1 {
+                        self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                    }
+                }
+            } else {
+                
+            }
+        }
     }
     
     func sortingByDate(text: String) {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E1D4F0B2B7289010065D9B2 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2E1D4F0A2B7289010065D9B2 /* .gitignore */; };
+		2E1D4F0D2B7289140065D9B2 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D4F0C2B7289140065D9B2 /* APIKey.swift */; };
+		2E1D4F0F2B7289680065D9B2 /* ShoppingAPISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D4F0E2B7289680065D9B2 /* ShoppingAPISessionManager.swift */; };
+		2E1D4F112B728B980065D9B2 /* ShoppingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D4F102B728B980065D9B2 /* ShoppingAPI.swift */; };
 		2E32D2AF2B5BACB1007D60F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E32D2AE2B5BACB1007D60F8 /* MainViewController.swift */; };
 		2E32D2B22B5BACDE007D60F8 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E32D2B02B5BACDE007D60F8 /* RecentSearchTableViewCell.swift */; };
 		2EBFFBDD2B5A538F0029CD35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFFBDC2B5A538F0029CD35 /* AppDelegate.swift */; };
@@ -36,11 +40,14 @@
 		2EFDF1192B5D0EAD00566070 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF1182B5D0EAD00566070 /* SearchResultViewController.swift */; };
 		2EFDF11C2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF11A2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift */; };
 		2EFDF11D2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFDF11B2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib */; };
-		2EFDF11F2B5D16D400566070 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF11E2B5D16D400566070 /* APIKey.swift */; };
 		2EFDF1212B5D1AF700566070 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFDF1202B5D1AF700566070 /* Shopping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E1D4F0A2B7289010065D9B2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2E1D4F0C2B7289140065D9B2 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		2E1D4F0E2B7289680065D9B2 /* ShoppingAPISessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAPISessionManager.swift; sourceTree = "<group>"; };
+		2E1D4F102B728B980065D9B2 /* ShoppingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAPI.swift; sourceTree = "<group>"; };
 		2E32D2AE2B5BACB1007D60F8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2E32D2B02B5BACDE007D60F8 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
 		2EBFFBD92B5A538F0029CD35 /* SeSACShopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACShopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +74,6 @@
 		2EFDF1182B5D0EAD00566070 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		2EFDF11A2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		2EFDF11B2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCollectionViewCell.xib; sourceTree = "<group>"; };
-		2EFDF11E2B5D16D400566070 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		2EFDF1202B5D1AF700566070 /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,8 +96,11 @@
 		2E3CD5BB2B5E507F00E36DB5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2E1D4F0C2B7289140065D9B2 /* APIKey.swift */,
 				2EFDF1202B5D1AF700566070 /* Shopping.swift */,
 				2ED0C00B2B60099B00107827 /* ShoppingAPIManager.swift */,
+				2E1D4F0E2B7289680065D9B2 /* ShoppingAPISessionManager.swift */,
+				2E1D4F102B728B980065D9B2 /* ShoppingAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,6 +116,7 @@
 		2EBFFBD02B5A538F0029CD35 = {
 			isa = PBXGroup;
 			children = (
+				2E1D4F0A2B7289010065D9B2 /* .gitignore */,
 				2EBFFBDB2B5A538F0029CD35 /* SeSACShopping */,
 				2EBFFBDA2B5A538F0029CD35 /* Products */,
 			);
@@ -134,7 +144,6 @@
 				2EBFFBF32B5A54190029CD35 /* SearchResult */,
 				2EBFFBF42B5A54290029CD35 /* Settings */,
 				2EBFFC0D2B5AA5170029CD35 /* UserDefaultManager.swift */,
-				2EFDF11E2B5D16D400566070 /* APIKey.swift */,
 				2EBFFBF52B5A55B30029CD35 /* Extension */,
 				2EF02D2E2B67F547008876BF /* CustomView */,
 				2E3CD5BC2B5E509B00E36DB5 /* Resource */,
@@ -297,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EBFFBE92B5A53900029CD35 /* LaunchScreen.storyboard in Resources */,
+				2E1D4F0B2B7289010065D9B2 /* .gitignore in Resources */,
 				2EFDF11D2B5D0ECA00566070 /* SearchResultCollectionViewCell.xib in Resources */,
 				2EBFFBE62B5A53900029CD35 /* Assets.xcassets in Resources */,
 				2EBFFC0C2B5A9F960029CD35 /* ProfileImageCollectionViewCell.xib in Resources */,
@@ -316,7 +326,9 @@
 				2EBFFBDD2B5A538F0029CD35 /* AppDelegate.swift in Sources */,
 				2EBFFC0E2B5AA5170029CD35 /* UserDefaultManager.swift in Sources */,
 				2ED6B5CC2B5D817400F25D13 /* SettingViewController.swift in Sources */,
+				2E1D4F0F2B7289680065D9B2 /* ShoppingAPISessionManager.swift in Sources */,
 				2EBFFBF72B5A55E60029CD35 /* UIColor+CustomColor.swift in Sources */,
+				2E1D4F112B728B980065D9B2 /* ShoppingAPI.swift in Sources */,
 				2E32D2B22B5BACDE007D60F8 /* RecentSearchTableViewCell.swift in Sources */,
 				2EBFFC012B5A5EE60029CD35 /* ProfileSettingViewController.swift in Sources */,
 				2EBFFBDF2B5A538F0029CD35 /* SceneDelegate.swift in Sources */,
@@ -326,11 +338,11 @@
 				2ED0C00C2B60099B00107827 /* ShoppingAPIManager.swift in Sources */,
 				2EF02D302B67F56D008876BF /* ProfileImageView.swift in Sources */,
 				2ED6B5CF2B5D817F00F25D13 /* SettingTableViewCell.swift in Sources */,
+				2E1D4F0D2B7289140065D9B2 /* APIKey.swift in Sources */,
 				2EFDF11C2B5D0ECA00566070 /* SearchResultCollectionViewCell.swift in Sources */,
 				2E32D2AF2B5BACB1007D60F8 /* MainViewController.swift in Sources */,
 				2EFDF1192B5D0EAD00566070 /* SearchResultViewController.swift in Sources */,
 				2EBFFBFF2B5A5E520029CD35 /* OnboardingViewController.swift in Sources */,
-				2EFDF11F2B5D16D400566070 /* APIKey.swift in Sources */,
 				2EBFFC0B2B5A9F960029CD35 /* ProfileImageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
