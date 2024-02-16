@@ -27,15 +27,17 @@ class SearchResultViewController: UIViewController {
     var start = 1
     var totalCount = 70
     
+    var shouldScrollToTop = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         searchResultCollecitonView.backgroundColor = .clear
+        start = 1
         configView()
         configBtn()
         configNav()
         sortingBySim(text: searchBarInput)
-        start = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,6 +170,7 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
             // 카카오 책 API에 있던 isEnd 변수를 이런식으로 대체하는 게 맞는지 모르겠습니다.(totalCount는 70으로 초기화하였음)
             if list.items.count - 3 == item.row && list.items.count < totalCount {
                 start += 30
+                shouldScrollToTop = true
                 sortingBySim(text: searchBarInput)
             }
         }
@@ -176,21 +179,21 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
     
 extension SearchResultViewController {
     func sortingBySim(text: String) {
-        ShoppingAPIManager.shared.callRequestBySim(text: text, start: start) { shopping in
-            if self.start == 1 {
-                self.list = shopping
-            } else {
-                self.list.items.append(contentsOf: shopping.items)
-                self.totalCount = shopping.total
-            }
-            self.searchResultCollecitonView.reloadData()
-            self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
-            
-            // 재검색시 스크롤 상단으로
-            if self.start == 1 {
-                self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
-            }
-        }
+//        ShoppingAPIManager.shared.callRequestBySim(text: text, start: start) { shopping in
+//            if self.start == 1 {
+//                self.list = shopping
+//            } else {
+//                self.list.items.append(contentsOf: shopping.items)
+//                self.totalCount = shopping.total
+//            }
+//            self.searchResultCollecitonView.reloadData()
+//            self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
+//            
+//            // 재검색시 스크롤 상단으로
+//            if self.start == 1 {
+//                self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+//            }
+//        }
         
         ShoppingAPISessionManager.shared.callRequestBySim2(text: text, start: start) { shopping, error in
             if error == nil {
@@ -208,8 +211,10 @@ extension SearchResultViewController {
                     self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
                     
                     // 재검색시 스크롤 상단으로
-                    if self.start == 1 {
+                    // shouldScrollToTop 플래그를 체크하여 스크롤을 상단으로 이동
+                    if self.shouldScrollToTop {
                         self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                        self.shouldScrollToTop = false
                     }
                 }
             } else {

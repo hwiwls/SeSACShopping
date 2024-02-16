@@ -99,8 +99,8 @@
 				2E1D4F0C2B7289140065D9B2 /* APIKey.swift */,
 				2EFDF1202B5D1AF700566070 /* Shopping.swift */,
 				2ED0C00B2B60099B00107827 /* ShoppingAPIManager.swift */,
-				2E1D4F0E2B7289680065D9B2 /* ShoppingAPISessionManager.swift */,
 				2E1D4F102B728B980065D9B2 /* ShoppingAPI.swift */,
+				2E1D4F0E2B7289680065D9B2 /* ShoppingAPISessionManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
