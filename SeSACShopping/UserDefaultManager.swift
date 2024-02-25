@@ -73,7 +73,7 @@ class UserDefaultManager {
         }
     }
     
-    var isSetting: Bool {
+    var isReg: Bool {
         get {
             ud.bool(forKey: UDKey.isSetting.rawValue)
         }

@@ -78,7 +78,7 @@ extension SettingViewController {
     }
     
     @IBAction func profileViewClicked(_ sender: UITapGestureRecognizer) {
-        UserDefaultManager.shared.isSetting = false
+        UserDefaultManager.shared.isReg = false
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "ProfileSettingViewController") as! ProfileSettingViewController
         self.navigationController?.pushViewController(vc, animated: true)

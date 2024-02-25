@@ -8,14 +8,6 @@
 import UIKit
 import SnapKit
 
-
-enum ValidationError: Error {
-    case emptyString    // 빈 문자열
-    case isCharLimit    // 글자수 제한(2글자~10글자)
-    case specialChar    // 특수문자
-    case isNumber      // 숫자
-}
-
 class ProfileSettingViewController: UIViewController {
     
     let viewModel = ProfileSettingViewModel()
@@ -76,7 +68,7 @@ class ProfileSettingViewController: UIViewController {
         let selectedImg = UserDefaultManager.shared.selectedImage
         profileImageView.image = UIImage(named: selectedImg)
         
-        if UserDefaultManager.shared.isSetting == false {
+        if UserDefaultManager.shared.isReg == false {
             self.navigationItem.title = "프로필 편집"
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         } else {
@@ -88,10 +80,11 @@ class ProfileSettingViewController: UIViewController {
 
 extension ProfileSettingViewController {
     @objc func completeBtnClicked() {
-        UserDefaultManager.shared.nickname = nicknameTextField.text!
-        UserDefaultManager.shared.userState = true
+        if let nickname = nicknameTextField.text {
+            viewModel.inputNickname.value = nickname
+        }
         
-        if UserDefaultManager.shared.isSetting == false {
+        if UserDefaultManager.shared.isReg == false {
             navigationController?.popViewController(animated: true)
         } else {
             let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -126,9 +119,17 @@ extension ProfileSettingViewController {
     }
     
     @objc func backToPrevios() {
-        navigationController?.popViewController(animated: true)
-        UserDefaultManager.shared.removeSelectedImage()
-        UserDefaultManager.shared.removeNickname()
+        if viewModel.outputEnable.value {
+            navigationController?.popViewController(animated: true)
+            UserDefaultManager.shared.removeSelectedImage()
+            UserDefaultManager.shared.removeNickname()
+        } else {
+            // alert 띄우기
+            let alert = UIAlertController(title: "알림", message: "닉네임을 올바르게 입력해주세요.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func configView() {
