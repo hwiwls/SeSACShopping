@@ -18,6 +18,8 @@ enum ValidationError: Error {
 
 class ProfileSettingViewController: UIViewController {
     
+    let viewModel = ProfileSettingViewModel()
+    
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var stateLabel: UILabel!
@@ -46,6 +48,25 @@ class ProfileSettingViewController: UIViewController {
             profileImageView.addGestureRecognizer(tapGestureRecognizer)
         
         completeBtn.addTarget(self, action: #selector(completeBtnClicked), for: .touchUpInside)
+        
+        viewModel.outputValidation.bind { value in
+            self.stateLabel.text = value
+        }
+        
+        viewModel.outputValidColor.bind { value in
+            self.stateLabel.textColor = value ? UIColor.customColor.pointColor : .red
+        }
+
+        viewModel.outputEnable.bind { value in
+            self.completeBtn.isEnabled = value
+        }
+        
+        nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        viewModel.inputNickname.value = text
     }
     
     // 프로필 설정 이미지에서 뒤로 돌아올 때 이미지가 업데이트 되기 위해
@@ -163,63 +184,6 @@ extension ProfileSettingViewController {
 }
 
 extension ProfileSettingViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else {
-            return
-        }
-        
-        do {
-            _ = try validation(text: text)
-            stateLabel.text = "사용할 수 있는 닉네임이에요"
-            completeBtn.isEnabled = true
-        } catch {
-            switch error {
-            case ValidationError.emptyString:
-                print("닉네임을 입력해주세요")
-                stateLabel.text = "닉네임을 입력해주세요"
-            case ValidationError.isCharLimit:
-                print("2글자 이상 10글자 미만이 아닙니다.")
-                stateLabel.text = "2글자 이상 10글자 미만으로 설정해주세요"
-            case ValidationError.specialChar:
-                print("닉네임에 @, #, $, %는 포함할 수 없어요")
-                stateLabel.text = "닉네임에 @, #, $, %는 포함할 수 없어요"
-            case ValidationError.isNumber:
-                print("닉네임에 숫자는 포함할 수 없어요")
-                stateLabel.text = "닉네임에 숫자는 포함할 수 없어요"
-            default:
-                print("default error")
-            }
-        }
-        
-    }
-    
-    func validation(text: String) throws -> Bool {
-        let specialChar = ["@", "#", "$", "%"]
-        
-        guard !(text.isEmpty) else {
-            print("empty")
-            throw ValidationError.emptyString
-        }
-        
-        print("textCount: \(text.count)")
-        guard (text.count > 1 && text.count < 10) else {
-            print("isCharLimit")
-            throw ValidationError.isCharLimit
-        }
-        
-        guard !(text.contains(where: { $0.isNumber })) else {
-            print("isNumber")
-            throw ValidationError.isNumber
-        }
-        
-        guard !(specialChar.contains(where: text.contains)) else {
-            print("specialChar")
-            throw ValidationError.specialChar
-        }
-        
-        return true
-    }
-    
     // return 버튼 누르면 키보드 내려가게
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
