@@ -70,9 +70,9 @@ class ShoppingAPISessionManager {
                     completionHandler(nil, .noData)
                     return
                 }
-                
-                print(String(data: data, encoding: .utf8))
-                
+//                
+//                print(String(data: data, encoding: .utf8))
+//                
                 guard let response = response as? HTTPURLResponse else {
                     print("응답값이 오지 않음")
                     completionHandler(nil, .invalidResponse)

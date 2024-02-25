@@ -119,7 +119,7 @@ extension ProfileSettingViewController {
     }
     
     @objc func backToPrevios() {
-        if viewModel.outputEnable.value {
+        if viewModel.outputEnable.value || UserDefaultManager.shared.userState == false {
             navigationController?.popViewController(animated: true)
             UserDefaultManager.shared.removeSelectedImage()
             UserDefaultManager.shared.removeNickname()

@@ -10,6 +10,8 @@ import UIKit
 let imageList = ["profile1", "profile2", "profile3", "profile4", "profile5", "profile6", "profile7", "profile8", "profile9", "profile10", "profile11","profile12", "profile13", "profile14"]
 
 class ProfileImageViewController: UIViewController {
+    
+    var viewModel = ProfileImageViewModel()
 
     @IBOutlet weak var profileImageCollectionView: UICollectionView!
     
@@ -18,9 +20,7 @@ class ProfileImageViewController: UIViewController {
         return imageView
     }()
     
-    lazy var randomImage = imageList.randomElement() ?? "profile1"
-    
-    lazy var selectedImage = randomImage
+    var selectedImage: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +70,7 @@ extension ProfileImageViewController {
         layout.scrollDirection = .vertical
         
         profileImageCollectionView.collectionViewLayout = layout
+        selectedImage = imageList.randomElement() ?? "profile1"
     }
     
     // 이 메소드는 뷰의 레이아웃이 결정된 후에 호출되므로, 이 시점에서 이미지 뷰의 너비를 알 수 있
@@ -81,13 +82,13 @@ extension ProfileImageViewController {
 
 extension ProfileImageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 14
+        return viewModel.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileImageCollectionViewCell" , for: indexPath) as! ProfileImageCollectionViewCell
-        
-        cell.profileImageView.image = UIImage(named: imageList[indexPath.row])
+        let imageName = viewModel.imageForItemAt(indexPath)
+        cell.profileImageView.image = UIImage(named: imageName)
         cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width / 2
         
         return cell
@@ -95,8 +96,8 @@ extension ProfileImageViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedImage = imageList[indexPath.row]
-        UserDefaultManager.shared.selectedImage = selectedImage
-        selectedProfileImageView.image = UIImage(named: selectedImage)
+        UserDefaultManager.shared.selectedImage = selectedImage ?? "profile1"
+        selectedProfileImageView.image = UIImage(named: selectedImage ?? "profile1")
         // 테두리가 보이지 않는다는 문제가 있습니다.
         selectedProfileImageView.layer.borderWidth = 5
         selectedProfileImageView.layer.borderColor = UIColor.customColor.pointColor.cgColor
