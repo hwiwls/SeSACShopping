@@ -37,7 +37,9 @@ class SearchResultViewController: UIViewController {
         configView()
         configBtn()
         configNav()
-        sortingBySim(text: searchBarInput)
+        Task {
+            await sortingBySim(text: searchBarInput)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,17 +90,19 @@ extension SearchResultViewController {
         sender.isSelected = true
         updateButtonColor(sender)
         
-        switch sender {
-        case accuracyBtn:
-            sortingBySim(text: searchBarInput)
-        case dateOrederBtn:
-            sortingByDate(text: searchBarInput)
-        case highPriceBtn:
-            sortingByDsc(text: searchBarInput)
-        case lowPriceBtn:
-            sortingByAsc(text: searchBarInput)
-        default:
-            break
+        Task {
+            switch sender {
+            case accuracyBtn:
+                await sortingBySim(text: searchBarInput)
+            case dateOrederBtn:
+                await sortingByDate(text: searchBarInput)
+            case highPriceBtn:
+                await sortingByDsc(text: searchBarInput)
+            case lowPriceBtn:
+                await sortingByAsc(text: searchBarInput)
+            default:
+                break
+            }
         }
     }
     
@@ -169,111 +173,109 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
         for item in indexPaths {
             // 카카오 책 API에 있던 isEnd 변수를 이런식으로 대체하는 게 맞는지 모르겠습니다.(totalCount는 70으로 초기화하였음)
             if list.items.count - 3 == item.row && list.items.count < totalCount {
-                start += 30
-                shouldScrollToTop = true
-                sortingBySim(text: searchBarInput)
+                Task {
+                    start += 30
+                    shouldScrollToTop = true
+                    await sortingBySim(text: searchBarInput)
+                }
             }
         }
     }
 }
     
 extension SearchResultViewController {
-    func sortingBySim(text: String) {
-//        ShoppingAPIManager.shared.callRequestBySim(text: text, start: start) { shopping in
-//            if self.start == 1 {
-//                self.list = shopping
-//            } else {
-//                self.list.items.append(contentsOf: shopping.items)
-//                self.totalCount = shopping.total
-//            }
-//            self.searchResultCollecitonView.reloadData()
-//            self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
-//            
-//            // 재검색시 스크롤 상단으로
-//            if self.start == 1 {
-//                self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
-//            }
-//        }
-        
-        ShoppingAPISessionManager.shared.callRequestBySim2(text: text, start: start) { shopping, error in
-            if error == nil {
-                guard let shopping = shopping else { return }
-                
+    func sortingBySim(text: String) async {
+        do {
+            let shopping = try await ShoppingAPISessionManager.shared.callRequestBySim2(text: text, start: start)
+            if self.start == 1 {
+                self.list = shopping
+            } else {
+                self.list.items.append(contentsOf: shopping.items)
+                self.totalCount = shopping.total
+            }
+            
+            DispatchQueue.main.async {
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
+                if self.shouldScrollToTop {
+                    self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                    self.shouldScrollToTop = false
+                }
+            }
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    func sortingByDate(text: String) async {
+        do {
+            let shopping = try await ShoppingAPISessionManager.shared.callRequestByDate2(text: text, start: start)
+            if start == 1 {
+                self.list = shopping
+            } else {
+                self.list.items.append(contentsOf: shopping.items)
+                self.totalCount = shopping.total
+            }
+            
+            DispatchQueue.main.async {
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
+                if self.shouldScrollToTop {
+                    self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                    self.shouldScrollToTop = false
+                }
+            }
+        } catch {
+            print("Error fetching results by date: \(error)")
+        }
+    }
+
+    
+    func sortingByAsc(text: String) async {
+        do {
+            let shopping = try await ShoppingAPISessionManager.shared.callRequestByAsc2(text: text, start: start)
+            if start == 1 {
+                self.list = shopping
+            } else {
+                self.list.items.append(contentsOf: shopping.items)
+                self.totalCount = shopping.total
+            }
+            
+            DispatchQueue.main.async {
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
                 if self.start == 1 {
-                    self.list = shopping
-                } else {
-                    self.list.items.append(contentsOf: shopping.items)
-                    self.totalCount = shopping.total
+                    self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                    self.shouldScrollToTop = false
                 }
-                
-                DispatchQueue.main.async {
-                    self.searchResultCollecitonView.reloadData()
-                    self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
-                    
-                    // 재검색시 스크롤 상단으로
-                    // shouldScrollToTop 플래그를 체크하여 스크롤을 상단으로 이동
-                    if self.shouldScrollToTop {
-                        self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
-                        self.shouldScrollToTop = false
-                    }
+            }
+        } catch {
+            print("Error fetching results in ascending order: \(error)")
+        }
+    }
+
+    
+    func sortingByDsc(text: String) async {
+        do {
+            let shopping = try await ShoppingAPISessionManager.shared.callRequestByDsc2(text: text, start: start)
+            if start == 1 {
+                self.list = shopping
+            } else {
+                self.list.items.append(contentsOf: shopping.items)
+                self.totalCount = shopping.total
+            }
+            
+            DispatchQueue.main.async {
+                self.searchResultCollecitonView.reloadData()
+                self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
+                if self.start == 1 {
+                    self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                    self.shouldScrollToTop = false
                 }
-            } else {
-                
             }
+        } catch {
+            print("Error fetching results in descending order: \(error)")
         }
     }
-    
-    func sortingByDate(text: String) {
-        ShoppingAPIManager.shared.callRequestByDate(text: text, start: start) { shopping in
-            if self.start == 1 {
-                self.list = shopping
-            } else {
-                self.list.items.append(contentsOf: shopping.items)
-                self.totalCount = shopping.total
-            }
-            self.searchResultCollecitonView.reloadData()
-            self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
-            
-            // 재검색시 스크롤 상단으로
-            if self.start == 1 {
-                self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
-            }
-        }
-    }
-    
-    func sortingByAsc(text: String) {
-        ShoppingAPIManager.shared.callRequestByAsc(text: text, start: start) { shopping in
-            if self.start == 1 {
-                self.list = shopping
-            } else {
-                self.list.items.append(contentsOf: shopping.items)
-                self.totalCount = shopping.total
-            }
-            self.searchResultCollecitonView.reloadData()
-            self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
-            
-            // 재검색시 스크롤 상단으로
-            if self.start == 1 {
-                self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
-            }
-        }
-    }
-    
-    func sortingByDsc(text: String) {
-        ShoppingAPIManager.shared.callRequestByDsc(text: text, start: start) { shopping in
-            if self.start == 1 {
-                self.list = shopping
-            } else {
-                self.list.items.append(contentsOf: shopping.items)
-                self.totalCount = shopping.total
-            }
-            self.searchResultCollecitonView.reloadData()
-            self.resultCountLabel.text = "\(shopping.total)개의 검색 결과"
-            
-            // 재검색시 스크롤 상단으로
-            if self.start == 1 {
-                self.searchResultCollecitonView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
-            }
-        }
-    }
+
 }
